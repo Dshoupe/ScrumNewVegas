@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameHub.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace ScrumNUVegas
         public MainWindow()
         {
             InitializeComponent();
+            Deck deck = new Deck();
+            MessageBox.Show(deck.ToString());
         }
+
     }
 }

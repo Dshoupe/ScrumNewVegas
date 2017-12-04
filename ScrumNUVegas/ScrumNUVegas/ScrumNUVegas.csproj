@@ -93,5 +93,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameHub\GameHub.csproj">
+      <Project>{C8378A42-46E8-4ADC-94AD-21A2B7BF4140}</Project>
+      <Name>GameHub</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

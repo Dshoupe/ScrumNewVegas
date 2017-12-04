@@ -33,6 +33,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -98,6 +102,12 @@
       <Project>{C8378A42-46E8-4ADC-94AD-21A2B7BF4140}</Project>
       <Name>GameHub</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NUVegas.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NUVegas.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

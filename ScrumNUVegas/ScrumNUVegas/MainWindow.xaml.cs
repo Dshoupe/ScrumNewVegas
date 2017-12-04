@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,10 +24,19 @@ namespace ScrumNUVegas
     {
         public MainWindow()
         {
+            //Thread thread = new Thread(SplashScreenThread);
+            //thread.Start();
+            //thread.Abort();
             InitializeComponent();
-            Deck deck = new Deck();
-            MessageBox.Show(deck.ToString());
+            //Deck deck = new Deck();
+            //MessageBox.Show(deck.ToString());
         }
 
+        public void SplashScreenThread()
+        {
+            SplashScreen splash = new SplashScreen("/Images/NUVegas.jpg");
+            splash.Show(false);
+            splash.Close(new TimeSpan(0, 0, 5));
+        }
     }
 }

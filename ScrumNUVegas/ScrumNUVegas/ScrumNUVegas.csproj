@@ -89,6 +89,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\CWG Sans.ttf" />
+    <Resource Include="Fonts\destroy_the_enemy.ttf" />
+    <Resource Include="Fonts\FLATS.ttf" />
+    <Resource Include="Fonts\Ghost Of The Wild West.ttf" />
+    <Resource Include="Fonts\GRATIS.ttf" />
+    <Resource Include="Fonts\NOZSTUDIO.ttf" />
+    <Resource Include="Fonts\SEASRN__.ttf" />
+    <Resource Include="Fonts\StickFigures.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -109,5 +117,6 @@
   <ItemGroup>
     <Resource Include="Images\NUVegas.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

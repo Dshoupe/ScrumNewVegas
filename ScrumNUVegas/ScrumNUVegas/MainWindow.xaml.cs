@@ -24,8 +24,13 @@ namespace ScrumNUVegas
     {
         public MainWindow()
         {
+<<<<<<< HEAD
 
+=======
+            //SplashScreenThread();
+>>>>>>> 2d92bf355f2af7879860c30f532979659a7831f1
             InitializeComponent();
+            MainMenuLabel.Visibility = Visibility.Visible;
             //Deck deck = new Deck();
             //MessageBox.Show(deck.ToString());
         }
@@ -34,7 +39,32 @@ namespace ScrumNUVegas
         {
             SplashScreen splash = new SplashScreen("/Images/NUVegas.jpg");
             splash.Show(false);
-            splash.Close(new TimeSpan(0, 0, 5));
+            splash.Close(new TimeSpan(0, 0, 3));
+        }
+
+        private void BlackJackBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GoFishBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PokerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Poker is currently in progress");
+        }
+
+        private void WarBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -4,6 +4,29 @@
              xmlns:local="clr-namespace:ScrumNUVegas"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+	   <Style x:Key="#NOZSTUDIO">
+		  <Setter Property="TextElement.FontFamily" Value="Fonts/#NOZSTUDIO"/>
+	   </Style>
+	   <Style x:Key="#destroy_the_enemy">
+		  <Setter Property="TextElement.FontFamily" Value="Fonts/#destroy_the_enemy"/>
+	   </Style>
+	   <Style x:Key="#flats">
+		  <Setter Property="TextElement.FontFamily" Value="Fonts/#FLATS"/>
+	   </Style>
+	   <Style x:Key="#Gratis">
+		  <Setter Property="TextElement.FontFamily" Value="Fonts/#GRATIS"/>
+	   </Style>
+	   <Style x:Key="#CWGS">
+		  <Setter Property="TextElement.FontFamily" Value="Fonts/#CWG Sans"/>
+	   </Style>
+	   <Style x:Key="#Ghost">
+		  <Setter Property="TextElement.FontFamily" Value="Fonts/#Ghost Of The Wild West"/>
+	   </Style>
+	   <Style x:Key="#SEASRN">
+		  <Setter Property="TextElement.FontFamily" Value="Fonts/#SEASRN_"/>
+	   </Style>
+	   <Style x:Key="#Stick">
+		  <Setter Property="TextElement.FontFamily" Value="Fonts/#StickFigures"/>
+	   </Style>
     </Application.Resources>
 </Application>

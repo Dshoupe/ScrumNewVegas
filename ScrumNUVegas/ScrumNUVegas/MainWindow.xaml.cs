@@ -24,11 +24,6 @@ namespace ScrumNUVegas
     {
         public MainWindow()
         {
-<<<<<<< HEAD
-
-=======
-            //SplashScreenThread();
->>>>>>> 2d92bf355f2af7879860c30f532979659a7831f1
             InitializeComponent();
             MainMenuLabel.Visibility = Visibility.Visible;
             //Deck deck = new Deck();

@@ -24,9 +24,7 @@ namespace ScrumNUVegas
     {
         public MainWindow()
         {
-            //Thread thread = new Thread(SplashScreenThread);
-            //thread.Start();
-            //thread.Abort();
+
             InitializeComponent();
             //Deck deck = new Deck();
             //MessageBox.Show(deck.ToString());

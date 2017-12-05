@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,11 +19,21 @@ namespace GoFish
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GoFishWindow : Window
     {
-        public MainWindow()
+        public GoFishWindow()
         {
+            SplashScreenThread();
             InitializeComponent();
+            //Deck deck = new Deck();
+            //MessageBox.Show(deck.ToString());
+        }
+
+        public void SplashScreenThread()
+        {
+            SplashScreen splash = new SplashScreen("/Images/GoFish.jpg");
+            splash.Show(false);
+            splash.Close(new TimeSpan(0, 0, 5));
         }
     }
 }

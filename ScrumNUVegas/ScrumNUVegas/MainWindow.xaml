@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScrumNUVegas"
         mc:Ignorable="d"
-        Title="NU Vegas" Height="350" Width="525">
+        Title="NU Vegas" Height="350" Width="525"
+	   x:Name="main">
     <Grid>
 	   <Image Source="pack://application:,,,/Images/NUVegas.jpg" Height="400" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 	   <StackPanel x:Name="MainMenuLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible" Background="Silver" Height="300" Width="200">

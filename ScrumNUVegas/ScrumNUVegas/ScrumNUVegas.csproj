@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Game\BlackJack\BlackjackDealer.cs" />
+    <Compile Include="Game\BlackJack\BlackjackLogic.cs" />
+    <Compile Include="Game\BlackJack\BlackjackPlayer.cs" />
     <Compile Include="Game\War\WarPage.xaml.cs">
       <DependentUpon>WarPage.xaml</DependentUpon>
     </Compile>

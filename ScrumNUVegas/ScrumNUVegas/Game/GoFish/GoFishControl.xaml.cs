@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameHub.Models;
+using ScrumNUVegas.Game.GoFish.GoFishModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,5 +31,23 @@ namespace ScrumNUVegas.Game.GoFish
         {
 
         }
+
+        private void StartGame_Click(object sender, RoutedEventArgs e)
+        {
+            Player[] player = CreatePlayers(PlayersSlider.Value);
+
+            PlayerField.Children.Add();
+        }
+
+        private Player[] CreatePlayers(double value)
+        {
+            Player[] players = new Player[(int)value];
+            for (int i = 0; i < value; i++)
+            {
+                players[i] = new GoFishPlayer();
+            }
+            return players;
+        }
+        
     }
 }

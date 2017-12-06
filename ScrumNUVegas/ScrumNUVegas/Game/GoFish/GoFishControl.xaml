@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ScrumNUVegas.Game.GoFish"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <Grid Background="">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
@@ -23,11 +23,13 @@
         <StackPanel Grid.Column="0" Margin="0 100 0 0">
             <Label Content="Number of players" Background="Silver"></Label>
             <StackPanel Orientation="Horizontal">
-                <Slider x:Name="PlayersSlider" Maximum="4" Minimum="2" TickPlacement="BottomRight" TickFrequency="1" />
-                <Label Content="Number of PLayers"></Label>
+                <Slider Width="60" x:Name="PlayersSlider" Maximum="4" Minimum="2" TickPlacement="BottomRight" TickFrequency="1" />
+                <Label Content="{Binding ElementName=PlayersSlider, Path=Value}" Background="Silver"></Label>
             </StackPanel>
-            <Button Content="Start new Game"></Button>
+            <Button Content="Start new Game" Click="StartGame_Click"></Button>
         </StackPanel>
-
+        <StackPanel x:Name="PlayerField" Grid.Column="1" Orientation="Vertical">
+            
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -24,5 +24,10 @@ namespace ScrumNUVegas.Game.GoFish
         {
             InitializeComponent();
         }
+
+        private void MainMenu_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
     }
 }

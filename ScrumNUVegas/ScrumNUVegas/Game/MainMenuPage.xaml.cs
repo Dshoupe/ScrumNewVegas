@@ -1,6 +1,4 @@
-﻿using GameHub.Models;
-using ScrumNUVegas.BlackJack;
-using ScrumNUVegas.Game;
+﻿using ScrumNUVegas.BlackJack;
 using ScrumNUVegas.GoFish;
 using ScrumNUVegas.Poker;
 using ScrumNUVegas.War;
@@ -8,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,18 +17,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ScrumNUVegas
+namespace ScrumNUVegas.Game
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainMenuPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainMenuPage : Page
     {
-        public MainWindow()
+        public MainMenuPage()
         {
             InitializeComponent();
-            NavigationService ns = NavigationService.GetNavigationService(this);
-            game.Content = new MainMenuPage();
+            
         }
 
         public void SplashScreenThread()
@@ -43,22 +39,24 @@ namespace ScrumNUVegas
 
         private void BlackJackBtn_Click(object sender, RoutedEventArgs e)
         {
-            game.Content = new BlackJackPage();
+            NavigationWindow navigation = new NavigationWindow();
+            BlackJackPage page = new BlackJackPage();
+            navigation.Navigate(page);
         }
 
         private void GoFishBtn_Click(object sender, RoutedEventArgs e)
         {
-            game.Content = new GoFishPage();
+            this.Content = new GoFishPage();
         }
 
         private void PokerBtn_Click(object sender, RoutedEventArgs e)
         {
-            game.Content = new PokerPage();
+            this.Content = new PokerPage();
         }
 
         private void WarBtn_Click(object sender, RoutedEventArgs e)
         {
-            game.Content = new WarPage();
+            this.Content = new WarPage();
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -68,7 +66,7 @@ namespace ScrumNUVegas
 
         private void MainMenu_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            game.Content = new MainMenuPage();
+            this.Content = new MainMenuPage();
         }
     }
 }

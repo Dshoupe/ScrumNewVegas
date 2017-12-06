@@ -49,7 +49,6 @@ namespace ScrumNUVegas
 
         private void PokerBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Poker is currently in progress");
         }
 
         private void WarBtn_Click(object sender, RoutedEventArgs e)

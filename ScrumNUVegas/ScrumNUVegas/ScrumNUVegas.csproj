@@ -94,10 +94,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Game\GoFish\GoFishPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Game\Poker\PokerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,9 +112,6 @@
     </Compile>
     <Compile Include="Game\BlackJack\BlackJackPage.xaml.cs">
       <DependentUpon>BlackJackPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Game\GoFish\GoFishPage.xaml.cs">
-      <DependentUpon>GoFishPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

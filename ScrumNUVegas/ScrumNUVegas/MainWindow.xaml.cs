@@ -1,9 +1,4 @@
 ﻿using GameHub.Models;
-using ScrumNUVegas.BlackJack;
-using ScrumNUVegas.Game;
-using ScrumNUVegas.GoFish;
-using ScrumNUVegas.Poker;
-using ScrumNUVegas.War;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +25,6 @@ namespace ScrumNUVegas
         public MainWindow()
         {
             InitializeComponent();
-            NavigationService ns = NavigationService.GetNavigationService(this);
         }
 
         public void SplashScreenThread()
@@ -42,22 +36,22 @@ namespace ScrumNUVegas
 
         private void BlackJackBtn_Click(object sender, RoutedEventArgs e)
         {
-            game.Content = new BlackJackPage();
+
         }
 
         private void GoFishBtn_Click(object sender, RoutedEventArgs e)
         {
-            game.Content = new GoFishPage();
+
         }
 
         private void PokerBtn_Click(object sender, RoutedEventArgs e)
         {
-            game.Content = new PokerPage();
+
         }
 
         private void WarBtn_Click(object sender, RoutedEventArgs e)
         {
-            game.Content = new WarPage();
+
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)

@@ -31,7 +31,6 @@ namespace ScrumNUVegas
         {
             InitializeComponent();
             NavigationService ns = NavigationService.GetNavigationService(this);
-            game.Content = new MainMenuPage();
         }
 
         public void SplashScreenThread()
@@ -68,7 +67,7 @@ namespace ScrumNUVegas
 
         private void MainMenu_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            game.Content = new MainMenuPage();
+
         }
     }
 }

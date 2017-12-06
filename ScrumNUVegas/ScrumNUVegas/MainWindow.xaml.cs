@@ -1,4 +1,8 @@
 ﻿using GameHub.Models;
+using ScrumNUVegas.Game.BlackJack;
+using ScrumNUVegas.Game.GoFish;
+using ScrumNUVegas.Game.Poker;
+using ScrumNUVegas.Game.War;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +26,11 @@ namespace ScrumNUVegas
     /// </summary>
     public partial class MainWindow : Window
     {
+        private StackPanel mainMenu;
         public MainWindow()
         {
             InitializeComponent();
+            mainMenu = MainMenu;
         }
 
         public void SplashScreenThread()
@@ -36,22 +42,26 @@ namespace ScrumNUVegas
 
         private void BlackJackBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            GameArea.Children.Clear();
+            GameArea.Children.Add(new BlackJackControl());
         }
 
         private void GoFishBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            GameArea.Children.Clear();
+            GameArea.Children.Add(new GoFishControl());
         }
 
         private void PokerBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            GameArea.Children.Clear();
+            GameArea.Children.Add(new PokerControl());
         }
 
         private void WarBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            GameArea.Children.Clear();
+            GameArea.Children.Add(new WarControl());
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -61,7 +71,8 @@ namespace ScrumNUVegas
 
         private void MainMenu_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-
+            GameArea.Children.Clear();
+            GameArea.Children.Add(mainMenu);
         }
     }
 }

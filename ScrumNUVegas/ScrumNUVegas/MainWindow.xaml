@@ -17,7 +17,7 @@
                     Command="Open" />
     </Window.InputBindings>
     <Grid>
-	   <Image Source="pack://application:,,,/Resources/Images/NUVegas.jpg" Height="400" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	   <Image x:Name="Background" Source="pack://application:,,,/Resources/Images/NUVegas.jpg" Height="400" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 	   <StackPanel x:Name="GameArea" Margin="0 15 0 0">
 		  <StackPanel x:Name="MainMenu" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Silver" Height="300" Width="200">
 			 <Label Content="Welcome to NU Vegas" HorizontalContentAlignment="Center" FontSize="10" Style="{DynamicResource #Gratis}"/>

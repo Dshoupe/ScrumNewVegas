@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 
 namespace ScrumNUVegas
@@ -60,6 +61,8 @@ namespace ScrumNUVegas
 
         private void WarBtn_Click(object sender, RoutedEventArgs e)
         {
+            Uri resourceUri = new Uri("Images/BlackPiece.png", UriKind.Relative);
+            Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Clear();
             GameArea.Children.Add(new WarControl());
         }

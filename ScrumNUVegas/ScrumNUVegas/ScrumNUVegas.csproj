@@ -67,6 +67,8 @@
     <Compile Include="Game\Poker\PokerControl.xaml.cs">
       <DependentUpon>PokerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Game\War\Models\WarMenu.cs" />
+    <Compile Include="Game\War\Models\WarPlayer.cs" />
     <Compile Include="Game\War\WarControl.xaml.cs">
       <DependentUpon>WarControl.xaml</DependentUpon>
     </Compile>

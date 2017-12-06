@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameHub.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace CardGameSimulator.Blackjack
                 {
                     for(int face = 0; face < 13; face++)
                     {
-                        Card newCard = new Card((Face)face, (Color)color, (Suit)suit);
+                        Card newCard = new Card((Face)face, (CardColor)color, (Suit)suit);
                         Deck.Add(newCard);
                     }
                 }

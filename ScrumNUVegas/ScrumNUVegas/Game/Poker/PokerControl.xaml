@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+	   <Label FontSize="20">
+		  Poker is coming soon!
+	   </Label>
     </Grid>
 </UserControl>

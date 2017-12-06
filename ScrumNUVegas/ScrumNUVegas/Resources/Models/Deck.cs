@@ -24,6 +24,18 @@ namespace GameHub.Models
             }
         }
 
+        public void Shuffle()
+        {
+            Random rand = new Random();
+            for (int i = 0; i < Cards.Count; i++)
+            {
+                int randNum = rand.Next(0, Cards.Count() - 1);
+                Card temp = Cards[randNum];
+                Cards[randNum] = Cards[i];
+                Cards[i] = temp;
+            }
+        }
+
         public override string ToString()
         {
             StringBuilder retVal = new StringBuilder();

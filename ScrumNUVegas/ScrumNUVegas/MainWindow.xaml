@@ -6,16 +6,25 @@
         xmlns:local="clr-namespace:ScrumNUVegas"
         mc:Ignorable="d"
         Title="NU Vegas" Height="350" Width="525"
-	   x:Name="main">
-    <Grid>
-	   <Image Source="pack://application:,,,/Images/NUVegas.jpg" Height="400" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-	   <StackPanel x:Name="MainMenuLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible" Background="Silver" Height="300" Width="200">
-		  <Label Content="Welcome to NU Vegas" HorizontalContentAlignment="Center" FontSize="10" Style="{DynamicResource #Gratis}"/>
-		  <Button x:Name="BlackJackBtn" Width="100" Content="BlackJack" Margin="5" Padding="5" Style="{DynamicResource #Gratis}" Click="BlackJackBtn_Click"/>
-		  <Button x:Name="GoFishBtn" Width="100" Content="Go Fish" Margin="5" Padding="5" Style="{DynamicResource #Gratis}" Click="GoFishBtn_Click"/>
-		  <Button x:Name="PokerBtn" Width="100" Content="Poker" Margin="5" Padding="5" Style="{DynamicResource #Gratis}" Click="PokerBtn_Click"/>
-		  <Button x:Name="WarBtn" Width="100" Content="War" Margin="5" Padding="5" Style="{DynamicResource #Gratis}" Click="WarBtn_Click"/>
-		  <Button x:Name="CloseBtn" Width="100" Content="Exit" Margin="5 80 5 5" Padding="5" Style="{DynamicResource #Gratis}" Click="CloseBtn_Click"/>
+	   x:Name="game">
+    <Window.CommandBindings>
+	   <CommandBinding Command="Open"
+				    Executed="MainMenu_Executed"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+	   <KeyBinding Key="B"
+                    Modifiers="Ctrl"
+                    Command="Open" />
+    </Window.InputBindings>
+    <StackPanel>
+	   <StackPanel x:Name="fileMenu">
+		  <Menu>
+			 <MenuItem Header="_Menu">
+				<MenuItem Header="Main Menu"
+                          Command="Open" 
+					 InputGestureText="Ctrl+B"/>
+			 </MenuItem>
+		  </Menu>
 	   </StackPanel>
-    </Grid>
+    </StackPanel>
 </Window>

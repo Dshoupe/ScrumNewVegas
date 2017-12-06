@@ -7,8 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="PokerPage">
-
     <Grid>
-        
+	   <Label Content="Poker is currently in progress"/>
     </Grid>
 </Page>

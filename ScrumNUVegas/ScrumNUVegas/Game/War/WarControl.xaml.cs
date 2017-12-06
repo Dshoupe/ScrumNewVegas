@@ -40,6 +40,7 @@ namespace ScrumNUVegas.Game.War
        
         public void deckManager()
         {
+        
             for(int x = 0; x < deck.Cards.Count / 2; x++)
             {
                 player1.Hand.Add(deck.Cards[x]);
@@ -60,7 +61,11 @@ namespace ScrumNUVegas.Game.War
         }
         public void warBattle()
         {
-
+            while(player1.Hand.Count != 0 && player2.Hand.Count !=0)
+            {
+                for(int x = 0; )
+                if (player1.Hand[i].FaceValue)
+            }
         }
     }
 }

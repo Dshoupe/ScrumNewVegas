@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScrumNUVegas"
         mc:Ignorable="d"
-        Title="NU Vegas" Height="350" Width="525"
-	   x:Name="game">
+        Title="NU Vegas" Height="350" Width="525">
     <Window.CommandBindings>
 	   <CommandBinding Command="Open"
 				    Executed="MainMenu_Executed"/>

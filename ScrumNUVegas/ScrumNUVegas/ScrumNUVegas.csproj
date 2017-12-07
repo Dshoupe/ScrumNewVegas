@@ -58,6 +58,53 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Game\BlackJack\BlackJackControl.xaml.cs">
+      <DependentUpon>BlackJackControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\GoFish\GoFishControl.xaml.cs">
+      <DependentUpon>GoFishControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\GoFish\GoFishModels\GoFishPlayer.cs" />
+    <Compile Include="Game\Poker\PokerControl.xaml.cs">
+      <DependentUpon>PokerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\War\Models\WarMenu.cs" />
+    <Compile Include="Game\War\Models\WarPlayer.cs" />
+    <Compile Include="Game\War\WarControl.xaml.cs">
+      <DependentUpon>WarControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\BlackJack\BlackjackDealer.cs" />
+    <Compile Include="Game\BlackJack\BlackjackLogic.cs" />
+    <Compile Include="Game\BlackJack\BlackjackPlayer.cs" />
+    <Compile Include="Game\War\WarPage.xaml.cs">
+      <DependentUpon>WarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Models\Card.cs" />
+    <Compile Include="Resources\Models\CardColor.cs" />
+    <Compile Include="Resources\Models\Deck.cs" />
+    <Compile Include="Resources\Models\Face.cs" />
+    <Compile Include="Resources\Models\Player.cs" />
+    <Compile Include="Resources\Models\Suit.cs" />
+    <Page Include="Game\BlackJack\BlackJackControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\BlackJack\BlackJackPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\GoFish\GoFishControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\Poker\PokerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\War\WarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,10 +113,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Game\BlackJack\BlackJackPage.xaml.cs">
+      <DependentUpon>BlackJackPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Game\War\WarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -89,6 +143,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Resources\Fonts\CWG Sans.ttf" />
+    <Resource Include="Resources\Fonts\destroy_the_enemy.ttf" />
+    <Resource Include="Resources\Fonts\FLATS.ttf" />
+    <Resource Include="Resources\Fonts\Ghost Of The Wild West.ttf" />
+    <Resource Include="Resources\Fonts\GRATIS.ttf" />
+    <Resource Include="Resources\Fonts\NOZSTUDIO.ttf" />
+    <Resource Include="Resources\Fonts\SEASRN__.ttf" />
+    <Resource Include="Resources\Fonts\StickFigures.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -98,16 +160,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameHub\GameHub.csproj">
-      <Project>{C8378A42-46E8-4ADC-94AD-21A2B7BF4140}</Project>
-      <Name>GameHub</Name>
-    </ProjectReference>
+    <Resource Include="Resources\Images\NUVegas.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\NUVegas.ico" />
+    <Resource Include="Resources\Images\NUVegas.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\NUVegas.jpg" />
+    <Resource Include="Resources\Images\CasinoTable.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

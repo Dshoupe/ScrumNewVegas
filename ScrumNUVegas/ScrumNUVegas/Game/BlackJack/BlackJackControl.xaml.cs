@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GoFish
+namespace ScrumNUVegas.Game.BlackJack
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for BlackJackControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BlackJackControl : UserControl
     {
-        public MainWindow()
+        public BlackJackControl()
         {
             InitializeComponent();
         }

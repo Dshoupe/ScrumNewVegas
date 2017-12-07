@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CardGameSimulator.Blackjack 
 {
-    pulic class BlackjackDealer
+    public class BlackjackDealer
     {
         private List<Card> Deck = new List<Card>();
 

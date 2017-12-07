@@ -5,28 +5,28 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 	   <Style x:Key="#NOZSTUDIO">
-		  <Setter Property="TextElement.FontFamily" Value="Fonts/#NOZSTUDIO"/>
+		  <Setter Property="TextElement.FontFamily" Value="Resources/Fonts/#NOZSTUDIO"/>
 	   </Style>
 	   <Style x:Key="#destroy_the_enemy">
-		  <Setter Property="TextElement.FontFamily" Value="Fonts/#destroy_the_enemy"/>
+		  <Setter Property="TextElement.FontFamily" Value="Resources/Fonts/#destroy_the_enemy"/>
 	   </Style>
 	   <Style x:Key="#flats">
-		  <Setter Property="TextElement.FontFamily" Value="Fonts/#FLATS"/>
+		  <Setter Property="TextElement.FontFamily" Value="Resources/Fonts/#FLATS"/>
 	   </Style>
 	   <Style x:Key="#Gratis">
-		  <Setter Property="TextElement.FontFamily" Value="Fonts/#GRATIS"/>
+		  <Setter Property="TextElement.FontFamily" Value="Resources/Fonts/#GRATIS"/>
 	   </Style>
 	   <Style x:Key="#CWGS">
-		  <Setter Property="TextElement.FontFamily" Value="Fonts/#CWG Sans"/>
+		  <Setter Property="TextElement.FontFamily" Value="Resources/Fonts/#CWG Sans"/>
 	   </Style>
 	   <Style x:Key="#Ghost">
-		  <Setter Property="TextElement.FontFamily" Value="Fonts/#Ghost Of The Wild West"/>
+		  <Setter Property="TextElement.FontFamily" Value="Resources/Fonts/#Ghost Of The Wild West"/>
 	   </Style>
 	   <Style x:Key="#SEASRN">
-		  <Setter Property="TextElement.FontFamily" Value="Fonts/#SEASRN_"/>
+		  <Setter Property="TextElement.FontFamily" Value="Resources/Fonts/#SEASRN_"/>
 	   </Style>
 	   <Style x:Key="#Stick">
-		  <Setter Property="TextElement.FontFamily" Value="Fonts/#StickFigures"/>
+		  <Setter Property="TextElement.FontFamily" Value="Resources/Fonts/#StickFigures"/>
 	   </Style>
     </Application.Resources>
 </Application>

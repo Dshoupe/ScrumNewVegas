@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace GameHub.Models
 {
@@ -12,10 +13,10 @@ namespace GameHub.Models
         public Face FaceValue { get; set; }
         public CardColor Color { get; set; }
         public Suit Suit { get; set; }
-        public Brush CardImage { get; set; }
+        public ImageSource CardImage { get; set; }
         public bool IsFaceDown { get; set; }
 
-        public Card(Face faceValue, CardColor color, Suit suit, Brush brush)
+        public Card(Face faceValue, CardColor color, Suit suit, ImageSource brush)
         {
             FaceValue = faceValue;
             Color = color;
@@ -30,6 +31,37 @@ namespace GameHub.Models
             Color = color;
             Suit = suit;
             IsFaceDown = false;
+        }
+
+        public void Flip()
+        {
+            Uri resourceUri = null;
+            if (!IsFaceDown)
+            {
+                resourceUri = new Uri($"Resources/Images/CardImages/CardBacks/Red_back.jpg", UriKind.Relative);
+                IsFaceDown = true;
+            }
+            else
+            {
+                if (Suit == Suit.Spades)
+                {
+                    resourceUri = new Uri($"Resources/Images/CardImages/{(int)FaceValue + 1}S.jpg", UriKind.Relative);
+                }
+                else if (Suit == Suit.Clubs)
+                {
+                    resourceUri = new Uri($"Resources/Images/CardImages/{((int)FaceValue % 13) + 1}C.jpg", UriKind.Relative);
+                }
+                else if (Suit == Suit.Hearts)
+                {
+                    resourceUri = new Uri($"Resources/Images/CardImages/{((int)FaceValue % 13) + 1}H.jpg", UriKind.Relative);
+                }
+                else
+                {
+                    resourceUri = new Uri($"Resources/Images/CardImages/{((int)FaceValue % 13) + 1}D.jpg", UriKind.Relative);
+                }
+                IsFaceDown = false;
+            }
+            CardImage = new BitmapImage(resourceUri);
         }
 
         public override string ToString()

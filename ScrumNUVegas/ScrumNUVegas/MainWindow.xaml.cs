@@ -32,9 +32,10 @@ namespace ScrumNUVegas
         {
             InitializeComponent();
             mainMenu = MainMenu;
+            Deck deck = new Deck();
         }
 
-        public void SplashScreenThread()
+        public void ShowSplashScreen()
         {
             SplashScreen splash = new SplashScreen("/Images/NUVegas.jpg");
             splash.Show(false);
@@ -44,37 +45,45 @@ namespace ScrumNUVegas
         private void BlackJackBtn_Click(object sender, RoutedEventArgs e)
         {
             GameArea.Children.Clear();
+            Uri resourceUri = new Uri("Resources/Images/NuVegas.jpg", UriKind.Relative);
+            Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Add(new BlackJackControl());
         }
 
         private void GoFishBtn_Click(object sender, RoutedEventArgs e)
         {
             GameArea.Children.Clear();
+            Uri resourceUri = new Uri("Resources/Images/NuVegas.jpg", UriKind.Relative);
+            Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Add(new GoFishControl());
         }
 
         private void PokerBtn_Click(object sender, RoutedEventArgs e)
         {
             GameArea.Children.Clear();
+            Uri resourceUri = new Uri("Resources/Images/NuVegas.jpg", UriKind.Relative);
+            Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Add(new PokerControl());
         }
 
         private void WarBtn_Click(object sender, RoutedEventArgs e)
         {
-            Uri resourceUri = new Uri("Images/BlackPiece.png", UriKind.Relative);
-            Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Clear();
+            Uri resourceUri = new Uri("Resources/Images/CasinoTable.jpg", UriKind.Relative);
+            Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Add(new WarControl());
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
 
         private void MainMenu_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             GameArea.Children.Clear();
+            Uri resourceUri = new Uri("Resources/Images/NuVegas.jpg", UriKind.Relative);
+            Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Add(mainMenu);
         }
     }

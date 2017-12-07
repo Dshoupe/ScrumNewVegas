@@ -22,6 +22,7 @@ namespace ScrumNUVegas.Game.GoFish
     /// </summary>
     public partial class GoFishControl : UserControl
     {
+        Dealer dealer;
         public GoFishControl()
         {
             InitializeComponent();
@@ -34,9 +35,45 @@ namespace ScrumNUVegas.Game.GoFish
 
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
-            Player[] player = CreatePlayers(PlayersSlider.Value);
+            dealer = new Dealer();
+            PlayerField.Children.Clear();
+            Player[] players = CreatePlayers(PlayersSlider.Value);
+            int count = 1;
+            foreach (Player p in players)
+            {
+                StackPanel sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
 
-            //PlayerField.Children.Add();
+                Thickness margin = sp.Margin;
+                margin.Top = 20;
+                sp.Margin = margin;
+
+                p.Hand = dealer.DealFiveCards();
+                TextBox l = new TextBox();
+                margin = l.Margin;
+                margin.Top = 10;
+                margin.Bottom = 10;
+                l.Margin = margin;
+                l.Width = 100;
+                l.Text = $"Player {count++}";
+
+                sp.Children.Add(l);
+
+                for (int i = 0; i < p.Hand.Count(); i++)
+                {
+                    Label label = new Label();
+                    label.Background = new SolidColorBrush(Colors.Black);
+                    margin = label.Margin;
+                    margin.Right = 10;
+                    margin.Left = 10;
+                    label.Margin = margin;
+                    label.Width = 30;
+                    sp.Children.Add(label);
+                }
+
+                PlayerField.Children.Add(sp);
+            }
+            
         }
 
         private Player[] CreatePlayers(double value)

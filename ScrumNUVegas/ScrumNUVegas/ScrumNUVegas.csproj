@@ -64,6 +64,7 @@
     <Compile Include="Game\GoFish\GoFishControl.xaml.cs">
       <DependentUpon>GoFishControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Game\GoFish\GoFishModels\Dealer.cs" />
     <Compile Include="Game\GoFish\GoFishModels\GoFishPlayer.cs" />
     <Compile Include="Game\Poker\PokerControl.xaml.cs">
       <DependentUpon>PokerControl.xaml</DependentUpon>

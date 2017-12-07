@@ -9,6 +9,9 @@ namespace ScrumNUVegas.Game.GoFish.GoFishModels
 {
     class GoFishPlayer : Player
     {
-
+        public GoFishPlayer()
+        {
+            
+        }
     }
 }

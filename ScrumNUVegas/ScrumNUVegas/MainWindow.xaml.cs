@@ -61,7 +61,7 @@ namespace ScrumNUVegas
 
         private void WarBtn_Click(object sender, RoutedEventArgs e)
         {
-            Uri resourceUri = new Uri("Images/BlackPiece.png", UriKind.Relative);
+            Uri resourceUri = new Uri("Images/CasinoTable.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Clear();
             GameArea.Children.Add(new WarControl());

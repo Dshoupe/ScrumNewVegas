@@ -36,7 +36,7 @@ namespace ScrumNUVegas.Game.GoFish
         {
             Player[] player = CreatePlayers(PlayersSlider.Value);
 
-            PlayerField.Children.Add();
+            //PlayerField.Children.Add();
         }
 
         private Player[] CreatePlayers(double value)

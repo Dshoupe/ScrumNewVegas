@@ -168,5 +168,65 @@
   <ItemGroup>
     <Resource Include="Resources\Images\CasinoTable.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\CardImages\10C.jpg" />
+    <Resource Include="Resources\Images\CardImages\10D.jpg" />
+    <Resource Include="Resources\Images\CardImages\10H.jpg" />
+    <Resource Include="Resources\Images\CardImages\10S.jpg" />
+    <Resource Include="Resources\Images\CardImages\2C.jpg" />
+    <Resource Include="Resources\Images\CardImages\2D.jpg" />
+    <Resource Include="Resources\Images\CardImages\2H.jpg" />
+    <Resource Include="Resources\Images\CardImages\2S.jpg" />
+    <Resource Include="Resources\Images\CardImages\3C.jpg" />
+    <Resource Include="Resources\Images\CardImages\3D.jpg" />
+    <Resource Include="Resources\Images\CardImages\3H.jpg" />
+    <Resource Include="Resources\Images\CardImages\3S.jpg" />
+    <Resource Include="Resources\Images\CardImages\4C.jpg" />
+    <Resource Include="Resources\Images\CardImages\4D.jpg" />
+    <Resource Include="Resources\Images\CardImages\4H.jpg" />
+    <Resource Include="Resources\Images\CardImages\4S.jpg" />
+    <Resource Include="Resources\Images\CardImages\5C.jpg" />
+    <Resource Include="Resources\Images\CardImages\5D.jpg" />
+    <Resource Include="Resources\Images\CardImages\5H.jpg" />
+    <Resource Include="Resources\Images\CardImages\5S.jpg" />
+    <Resource Include="Resources\Images\CardImages\6C.jpg" />
+    <Resource Include="Resources\Images\CardImages\6D.jpg" />
+    <Resource Include="Resources\Images\CardImages\6H.jpg" />
+    <Resource Include="Resources\Images\CardImages\6S.jpg" />
+    <Resource Include="Resources\Images\CardImages\7C.jpg" />
+    <Resource Include="Resources\Images\CardImages\7D.jpg" />
+    <Resource Include="Resources\Images\CardImages\7H.jpg" />
+    <Resource Include="Resources\Images\CardImages\7S.jpg" />
+    <Resource Include="Resources\Images\CardImages\8C.jpg" />
+    <Resource Include="Resources\Images\CardImages\8D.jpg" />
+    <Resource Include="Resources\Images\CardImages\8H.jpg" />
+    <Resource Include="Resources\Images\CardImages\8S.jpg" />
+    <Resource Include="Resources\Images\CardImages\9C.jpg" />
+    <Resource Include="Resources\Images\CardImages\9D.jpg" />
+    <Resource Include="Resources\Images\CardImages\9H.jpg" />
+    <Resource Include="Resources\Images\CardImages\9S.jpg" />
+    <Resource Include="Resources\Images\CardImages\1C.jpg" />
+    <Resource Include="Resources\Images\CardImages\1D.jpg" />
+    <Resource Include="Resources\Images\CardImages\1H.jpg" />
+    <Resource Include="Resources\Images\CardImages\1S.jpg" />
+    <Resource Include="Resources\Images\CardImages\CardBacks\blue_back.jpg" />
+    <Resource Include="Resources\Images\CardImages\CardBacks\Gray_back.jpg" />
+    <Resource Include="Resources\Images\CardImages\CardBacks\Green_back.jpg" />
+    <Resource Include="Resources\Images\CardImages\CardBacks\purple_back.jpg" />
+    <Resource Include="Resources\Images\CardImages\CardBacks\Red_back.jpg" />
+    <Resource Include="Resources\Images\CardImages\CardBacks\Yellow_back.jpg" />
+    <Resource Include="Resources\Images\CardImages\11C.jpg" />
+    <Resource Include="Resources\Images\CardImages\11D.jpg" />
+    <Resource Include="Resources\Images\CardImages\11H.jpg" />
+    <Resource Include="Resources\Images\CardImages\11S.jpg" />
+    <Resource Include="Resources\Images\CardImages\13C.jpg" />
+    <Resource Include="Resources\Images\CardImages\13D.jpg" />
+    <Resource Include="Resources\Images\CardImages\13H.jpg" />
+    <Resource Include="Resources\Images\CardImages\13S.jpg" />
+    <Resource Include="Resources\Images\CardImages\12C.jpg" />
+    <Resource Include="Resources\Images\CardImages\12D.jpg" />
+    <Resource Include="Resources\Images\CardImages\12H.jpg" />
+    <Resource Include="Resources\Images\CardImages\12S.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

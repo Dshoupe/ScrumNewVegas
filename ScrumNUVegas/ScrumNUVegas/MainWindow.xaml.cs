@@ -32,7 +32,7 @@ namespace ScrumNUVegas
         {
             InitializeComponent();
             mainMenu = MainMenu;
-            //ShowSplashScreen();
+            Deck deck = new Deck();
         }
 
         public void ShowSplashScreen()

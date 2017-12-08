@@ -35,10 +35,12 @@ namespace ScrumNUVegas.Game.GoFish
 
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
+            SetUpPanel.Visibility = Visibility.Hidden;
+
             dealer = new Dealer();
             PlayerField.Children.Clear();
             Player[] players = CreatePlayers(PlayersSlider.Value);
-            int count = 1;
+            int count = 0;
             foreach (Player p in players)
             {
                 StackPanel sp = new StackPanel();
@@ -49,16 +51,17 @@ namespace ScrumNUVegas.Game.GoFish
                 sp.Margin = margin;
 
                 p.Hand = dealer.DealFiveCards();
-                TextBox l = new TextBox();
+                Label l = new Label();
                 margin = l.Margin;
                 margin.Top = 10;
                 margin.Bottom = 10;
                 l.Margin = margin;
                 l.Width = 100;
-                l.Text = $"Player {count++}";
+                TextBox t = (TextBox)PlayerSelectionLabels.Children[count++];
+                l.Content = t.Text;
 
                 sp.Children.Add(l);
-
+                
                 for (int i = 0; i < p.Hand.Count(); i++)
                 {
                     //REALLY weird issue, had to access the images at runtime so for GoFish, the images will be held in the debug folder -- https://stackoverflow.com/questions/569561/dynamic-loading-of-images-in-wpf
@@ -67,6 +70,7 @@ namespace ScrumNUVegas.Game.GoFish
                     BitmapImage bitmapImage = new BitmapImage();
                     bitmapImage.BeginInit();
                     bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    p.Hand[i].IsFaceDown = false;
                     bitmapImage.UriSource = p.Hand[i].CardUri;
                     bitmapImage.EndInit();
                     img.Source = bitmapImage;
@@ -91,6 +95,21 @@ namespace ScrumNUVegas.Game.GoFish
             }
             return players;
         }
-        
+
+        private void PlayersSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+            PlayerSelectionLabels.Children.Clear();
+            for (int i = 0; i < PlayersSlider.Value; i++)
+            {
+                TextBox t = new TextBox();
+                t.Name = $"Player{i + 1}";
+                t.Text = t.Name;
+                t.Width = 50;
+                Thickness margin = t.Margin;
+                margin.Top = 10;
+                t.Margin = margin;
+                PlayerSelectionLabels.Children.Add(t);
+            }
+        }
     }
 }

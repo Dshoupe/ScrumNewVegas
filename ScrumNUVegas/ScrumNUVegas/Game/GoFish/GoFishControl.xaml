@@ -12,16 +12,22 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
        
-        <StackPanel Grid.Column="0" Margin="0 100 0 0">
-            <Label Content="Number of players" Background="Silver"></Label>
-            <StackPanel Orientation="Horizontal" Background="Silver">
-                <Slider Width="60" x:Name="PlayersSlider" Maximum="4" Minimum="2" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" />
-                <Label Content="{Binding ElementName=PlayersSlider, Path=Value}" Background="Silver"></Label>
+        <StackPanel Grid.Column="0" Margin="0 100 0 0" x:Name="SetUpPanel">
+            <StackPanel Orientation="Horizontal">
+            <Label Content="Players" Width="60" Margin="0 0 0 10"/>
+                <Slider Width="60" x:Name="PlayersSlider" Maximum="4" Minimum="2" 
+                        TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" 
+                        Thumb.DragCompleted="PlayersSlider_DragCompleted"/>
+                <Label Content="{Binding ElementName=PlayersSlider, Path=Value}"/>
             </StackPanel>
-            <Button Content="Start new Game" Click="StartGame_Click"></Button>
+            <StackPanel x:Name="PlayerSelectionLabels"  Margin="0 10 0 0">
+                <TextBox x:Name="Player1" Text="Player 1" Width="50" Margin="0 10 0 0"/>
+                <TextBox x:Name="Player2" Text="Player 2" Width="50" Margin="0 10 0 0"/>
+            </StackPanel>
+            <Button Content="Start" Click="StartGame_Click" Width="40" Margin="0 10 0 0"/>
         </StackPanel>
         <StackPanel x:Name="PlayerField" Grid.Column="1" Orientation="Vertical">
-            <Image x:Name="FuckYou" Height="50" Width="30"/>
+            
         </StackPanel>
     </Grid>
 </UserControl>

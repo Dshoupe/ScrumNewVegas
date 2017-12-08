@@ -75,7 +75,7 @@ namespace ScrumNUVegas.Game.GoFish
                     margin.Right = 10;
                     margin.Left = 10;
                     label.Margin = margin;
-                    label.Width = 30;
+                    label.Width = 50;
                     sp.Children.Add(label);
                 }
                 PlayerField.Children.Add(sp);

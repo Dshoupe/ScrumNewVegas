@@ -9,11 +9,21 @@
     <Window.CommandBindings>
 	   <CommandBinding Command="Open"
 				    Executed="MainMenu_Executed"/>
+	   <CommandBinding Command="Save"
+				    Executed="Save_Executed"/>
+	   <CommandBinding Command="Close"
+				    Executed="Load_Executed"/>
     </Window.CommandBindings>
     <Window.InputBindings>
 	   <KeyBinding Key="B"
                     Modifiers="Ctrl"
                     Command="Open" />
+	   <KeyBinding Key="S"
+                    Modifiers="Ctrl"
+                    Command="Save" />
+	   <KeyBinding Key="O"
+                    Modifiers="Ctrl"
+                    Command="Close" />
     </Window.InputBindings>
     <Grid>
 	   <Image x:Name="Background" Source="pack://application:,,,/Resources/Images/NUVegas.jpg" Height="400" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -34,6 +44,12 @@
 				<MenuItem Header="Main Menu"
                           Command="Open" 
 					 InputGestureText="Ctrl+B"/>
+				<MenuItem x:Name="Save" Header="Save"
+                          Command="Save" 
+					 InputGestureText="Ctrl+S"/>
+				<MenuItem x:Name="Load" Header="Load"
+                          Command="Close" 
+					 InputGestureText="Ctrl+O"/>
 			 </MenuItem>
 		  </Menu>
 	   </StackPanel>

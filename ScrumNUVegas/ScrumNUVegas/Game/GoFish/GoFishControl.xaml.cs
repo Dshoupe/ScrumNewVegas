@@ -1,8 +1,11 @@
 ﻿using GameHub.Models;
+using Microsoft.Win32;
 using ScrumNUVegas.Game.GoFish.GoFishModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,11 +29,6 @@ namespace ScrumNUVegas.Game.GoFish
         public GoFishControl()
         {
             InitializeComponent();
-        }
-
-        private void MainMenu_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-
         }
 
         private void StartGame_Click(object sender, RoutedEventArgs e)
@@ -109,6 +107,44 @@ namespace ScrumNUVegas.Game.GoFish
                 t.Margin = margin;
                 PlayerSelectionLabels.Children.Add(t);
             }
+        }
+
+        private void SaveGame()
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.DefaultExt = ".gofish";
+            sfd.FileName = "GoFish.gofish";
+            sfd.Filter = "GoFish Game Saves (*.gofish)|*.gofish";
+            if (sfd.ShowDialog() == true)
+            {
+                using (FileStream stream = new FileStream(sfd.FileName, FileMode.OpenOrCreate))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(stream, dealer);
+                }
+            }
+        }
+
+        private void LoadGameWindow()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.DefaultExt = ".gofish";
+            ofd.Filter = "GoFish Game Saves (*.gofish)|*.gofish";
+            Dealer newGame = null;
+            if (ofd.ShowDialog() == true)
+            {
+                using (FileStream stream = new FileStream(ofd.FileName, FileMode.Open))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    newGame = (Dealer)bf.Deserialize(stream);
+                }
+                LoadGame(newGame);
+            }
+        }
+
+        private void LoadGame(Dealer newGame)
+        {
+
         }
     }
 }

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace ScrumNUVegas.Game.GoFish.GoFishModels
 {
-    class GoFishPlayer : Player
+    [Serializable]
+    public class GoFishPlayer : Player
     {
         public GoFishPlayer()
         {

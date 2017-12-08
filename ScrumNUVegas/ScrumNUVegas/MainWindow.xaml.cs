@@ -34,6 +34,8 @@ namespace ScrumNUVegas
             mainMenu = MainMenu;
             Deck deck = new Deck();
             Test1.Source = deck.Cards[0].CardImage;
+            Save.Visibility = Visibility.Hidden;
+            Load.Visibility = Visibility.Hidden;
         }
 
         public void ShowSplashScreen()
@@ -91,6 +93,16 @@ namespace ScrumNUVegas
             Background.Width = 600;
             Background.Height = 400;
             GameArea.Children.Add(mainMenu);
+        }
+
+        private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void Load_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
         }
     }
 }

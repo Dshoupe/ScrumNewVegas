@@ -26,6 +26,7 @@
 			 <Button x:Name="WarBtn" Width="100" Content="War" Margin="5" Padding="5" Style="{DynamicResource #Gratis}" Click="WarBtn_Click"/>
 			 <Button x:Name="CloseBtn" Width="100" Content="Exit" Margin="5 80 5 5" Padding="5" Style="{DynamicResource #Gratis}" Click="CloseBtn_Click"/>
 		  </StackPanel>
+		  <Image x:Name="Test1" Height="100" Width="100"/>
 	   </StackPanel>
 	   <StackPanel x:Name="fileMenu">
 		  <Menu>

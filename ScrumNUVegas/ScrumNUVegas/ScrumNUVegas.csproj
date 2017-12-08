@@ -169,8 +169,6 @@
   <ItemGroup>
     <Resource Include="Resources\Images\CasinoTable.jpg" />
   </ItemGroup>
-<<<<<<< HEAD
-=======
   <ItemGroup>
     <Resource Include="Resources\Images\CardImages\10C.jpg" />
     <Resource Include="Resources\Images\CardImages\10D.jpg" />
@@ -231,6 +229,5 @@
     <Resource Include="Resources\Images\CardImages\12H.jpg" />
     <Resource Include="Resources\Images\CardImages\12S.jpg" />
   </ItemGroup>
->>>>>>> master
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

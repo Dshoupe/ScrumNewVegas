@@ -33,6 +33,7 @@ namespace ScrumNUVegas
             InitializeComponent();
             mainMenu = MainMenu;
             Deck deck = new Deck();
+            Test1.Source = deck.Cards[0].CardImage;
         }
 
         public void ShowSplashScreen()

@@ -38,7 +38,7 @@ namespace GameHub.Models
                 {
                     cardColor = CardColor.Red;
                 }
-                Cards.Add(new Card((Face)(i % 13), cardColor, (Suit)(i / 13), new BitmapImage(resourceUri)));
+                Cards.Add(new Card((Face)(i % 13), cardColor, (Suit)(i / 13), new BitmapImage(resourceUri), resourceUri));
             }
         }
 

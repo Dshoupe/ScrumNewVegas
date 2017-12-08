@@ -61,10 +61,15 @@ namespace ScrumNUVegas.Game.GoFish
 
                 for (int i = 0; i < p.Hand.Count(); i++)
                 {
+                    //REALLY weird issue, had to access the images at runtime so for GoFish, the images will be held in the debug folder -- https://stackoverflow.com/questions/569561/dynamic-loading-of-images-in-wpf
                     Label label = new Label();
                     Image img = new Image();
-                    img.Source = p.Hand[i].CardImage;
-                    label.Background = new SolidColorBrush(Colors.Black);
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.UriSource = p.Hand[i].CardUri;
+                    bitmapImage.EndInit();
+                    img.Source = bitmapImage;
                     label.Content = img;
                     margin = label.Margin;
                     margin.Right = 10;
@@ -73,10 +78,8 @@ namespace ScrumNUVegas.Game.GoFish
                     label.Width = 30;
                     sp.Children.Add(label);
                 }
-
                 PlayerField.Children.Add(sp);
             }
-            
         }
 
         private Player[] CreatePlayers(double value)

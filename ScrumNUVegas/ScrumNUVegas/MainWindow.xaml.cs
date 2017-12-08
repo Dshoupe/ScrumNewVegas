@@ -46,7 +46,7 @@ namespace ScrumNUVegas
         private void BlackJackBtn_Click(object sender, RoutedEventArgs e)
         {
             GameArea.Children.Clear();
-            Uri resourceUri = new Uri("Resources/Images/NuVegas.jpg", UriKind.Relative);
+            Uri resourceUri = new Uri("Resources/Images/CasinoTable.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Add(new BlackJackControl());
         }
@@ -54,7 +54,7 @@ namespace ScrumNUVegas
         private void GoFishBtn_Click(object sender, RoutedEventArgs e)
         {
             GameArea.Children.Clear();
-            Uri resourceUri = new Uri("Resources/Images/NuVegas.jpg", UriKind.Relative);
+            Uri resourceUri = new Uri("Resources/Images/Go-Fish.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Add(new GoFishControl());
         }
@@ -62,15 +62,18 @@ namespace ScrumNUVegas
         private void PokerBtn_Click(object sender, RoutedEventArgs e)
         {
             GameArea.Children.Clear();
-            Uri resourceUri = new Uri("Resources/Images/NuVegas.jpg", UriKind.Relative);
+            Uri resourceUri = new Uri("Resources/Images/Poker.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
+            Background.Stretch = Stretch.Fill;
+            Background.Width = 500;
+            Background.Height = 300;
             GameArea.Children.Add(new PokerControl());
         }
 
         private void WarBtn_Click(object sender, RoutedEventArgs e)
         {
             GameArea.Children.Clear();
-            Uri resourceUri = new Uri("Resources/Images/CasinoTable.jpg", UriKind.Relative);
+            Uri resourceUri = new Uri("Resources/Images/War.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
             GameArea.Children.Add(new WarControl());
         }
@@ -85,6 +88,8 @@ namespace ScrumNUVegas
             GameArea.Children.Clear();
             Uri resourceUri = new Uri("Resources/Images/NuVegas.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
+            Background.Width = 600;
+            Background.Height = 400;
             GameArea.Children.Add(mainMenu);
         }
     }

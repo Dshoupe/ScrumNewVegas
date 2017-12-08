@@ -14,15 +14,17 @@ namespace GameHub.Models
         public CardColor Color { get; set; }
         public Suit Suit { get; set; }
         public ImageSource CardImage { get; set; }
+        public Uri CardUri { get; set; }
         public bool IsFaceDown { get; set; }
 
-        public Card(Face faceValue, CardColor color, Suit suit, ImageSource brush)
+        public Card(Face faceValue, CardColor color, Suit suit, ImageSource brush, Uri uriResource)
         {
             FaceValue = faceValue;
             Color = color;
             Suit = suit;
             CardImage = brush;
             IsFaceDown = false;
+            CardUri = uriResource;
         }
 
         public Card(Face faceValue, CardColor color, Suit suit)

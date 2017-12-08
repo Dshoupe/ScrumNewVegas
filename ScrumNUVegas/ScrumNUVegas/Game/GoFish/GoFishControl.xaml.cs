@@ -70,7 +70,6 @@ namespace ScrumNUVegas.Game.GoFish
                     BitmapImage bitmapImage = new BitmapImage();
                     bitmapImage.BeginInit();
                     bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                    p.Hand[i].IsFaceDown = false;
                     bitmapImage.UriSource = p.Hand[i].CardUri;
                     bitmapImage.EndInit();
                     img.Source = bitmapImage;

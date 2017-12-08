@@ -63,8 +63,8 @@ namespace ScrumNUVegas.Game.War
         {
             while(player1.Hand.Count != 0 && player2.Hand.Count !=0)
             {
-                for(int x = 0; )
-                if (player1.Hand[i].FaceValue)
+                //for(int x = 0; )
+                //if (player1.Hand[i].FaceValue)
             }
         }
     }

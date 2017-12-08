@@ -7,6 +7,7 @@ using System.Windows.Media.Imaging;
 
 namespace GameHub.Models
 {
+    [Serializable]
     public class Deck
     {
         public List<Card> Cards { get; set; }

@@ -7,14 +7,16 @@ using GameHub.Models;
 
 namespace ScrumNUVegas.Game.War.Models
 {
+    [Serializable]
     public class WarPlayer : Player
     {
+        bool IsCpu { get; set; }
+
         public WarPlayer(String name, bool isCpu, List<Card> hand)
         {
-            name = this.Name;
-            isCpu = this.isCpu;
-            hand = this.Hand;
+            Name = name;
+            IsCpu = isCpu;
+            Hand = hand;
         }
-        bool isCpu { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace GameHub.Models
 {
+    [Serializable]
     public class Card
     {
         public Face FaceValue { get; set; }

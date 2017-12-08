@@ -21,7 +21,7 @@
             <Button Content="Start new Game" Click="StartGame_Click"></Button>
         </StackPanel>
         <StackPanel x:Name="PlayerField" Grid.Column="1" Orientation="Vertical">
-            
+            <Image x:Name="FuckYou" Height="50" Width="30"/>
         </StackPanel>
     </Grid>
 </UserControl>

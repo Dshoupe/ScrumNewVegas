@@ -64,6 +64,7 @@ namespace GameHub.Models
                 }
                 IsFaceDown = false;
             }
+            CardUri = resourceUri;
             CardImage = new BitmapImage(resourceUri);
         }
 

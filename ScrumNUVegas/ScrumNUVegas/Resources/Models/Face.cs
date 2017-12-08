@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameHub.Models
 {
+    [Serializable]
     public enum Face
     {
         Ace = 0,

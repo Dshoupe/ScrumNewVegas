@@ -71,15 +71,13 @@
     </Compile>
     <Compile Include="Game\War\Models\WarMenu.cs" />
     <Compile Include="Game\War\Models\WarPlayer.cs" />
+    <Compile Include="Game\War\Models\WarSave.cs" />
     <Compile Include="Game\War\WarControl.xaml.cs">
       <DependentUpon>WarControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Game\BlackJack\BlackjackDealer.cs" />
-    <Compile Include="Game\BlackJack\BlackjackLogic.cs" />
-    <Compile Include="Game\BlackJack\BlackjackPlayer.cs" />
-    <Compile Include="Game\War\WarPage.xaml.cs">
-      <DependentUpon>WarPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Game\BlackJack\BlackJack Models\BlackjackDealer.cs" />
+    <Compile Include="Game\BlackJack\BlackJack Models\BlackjackLogic.cs" />
+    <Compile Include="Game\BlackJack\BlackJack Models\BlackjackPlayer.cs" />
     <Compile Include="Resources\Models\Card.cs" />
     <Compile Include="Resources\Models\CardColor.cs" />
     <Compile Include="Resources\Models\Deck.cs" />
@@ -87,10 +85,6 @@
     <Compile Include="Resources\Models\Player.cs" />
     <Compile Include="Resources\Models\Suit.cs" />
     <Page Include="Game\BlackJack\BlackJackControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Game\BlackJack\BlackJackPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,17 +108,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Game\BlackJack\BlackJackPage.xaml.cs">
-      <DependentUpon>BlackJackPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Game\War\WarPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

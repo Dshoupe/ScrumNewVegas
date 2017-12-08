@@ -62,7 +62,10 @@ namespace ScrumNUVegas.Game.GoFish
                 for (int i = 0; i < p.Hand.Count(); i++)
                 {
                     Label label = new Label();
+                    Image img = new Image();
+                    img.Source = p.Hand[i].CardImage;
                     label.Background = new SolidColorBrush(Colors.Black);
+                    label.Content = img;
                     margin = label.Margin;
                     margin.Right = 10;
                     margin.Left = 10;

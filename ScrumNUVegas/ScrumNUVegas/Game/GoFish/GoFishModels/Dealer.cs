@@ -9,7 +9,7 @@ namespace ScrumNUVegas.Game.GoFish.GoFishModels
 {
     public class Dealer
     {
-        Deck dealerDeck;
+        public Deck dealerDeck;
         public Dealer()
         {
             dealerDeck = new Deck();

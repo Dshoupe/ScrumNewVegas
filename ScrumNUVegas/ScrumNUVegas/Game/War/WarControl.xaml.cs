@@ -28,18 +28,10 @@ namespace ScrumNUVegas.Game.War
         private WarPlayer player1;
         private WarPlayer player2;
         private Deck deck;
-        private Card card;
 
         public WarControl()
         {
             InitializeComponent();
-            deck = new Deck();
-        }
-
-        public void FeatureSelection()
-        {
-
-            
         }
        
         public void DeckManager()
@@ -50,7 +42,7 @@ namespace ScrumNUVegas.Game.War
             }
             for(int x = 26; x < deck.Cards.Count; x++)
             {
-                player1.Hand.Add(deck.Cards[x]);
+                player2.Hand.Add(deck.Cards[x]);
             }
         }
 
@@ -102,6 +94,50 @@ namespace ScrumNUVegas.Game.War
                 //for(int x = 0; )
                 //if (player1.Hand[i].FaceValue)
             }
+        }
+
+        private void AICheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Player2Name.Visibility = Visibility.Hidden;
+        }
+
+        private void AICheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Player2Name.Visibility = Visibility.Visible;
+        }
+
+        private void StartGameBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GameModeSelection.Visibility = Visibility.Hidden;
+            GameArea.Visibility = Visibility.Visible;
+            player1 = new WarPlayer(Player1Name.Text, false, new List<Card>());
+            if ((bool)AICheckBox.IsChecked)
+            {
+                player2 = new WarPlayer("Computer", true, new List<Card>());
+            }
+            else
+            {
+                player2 = new WarPlayer(Player2Name.Text, false, new List<Card>());
+            }
+            deck = new Deck();
+            deck.Shuffle();
+            DeckManager();
+            Player1Details.Content = player1.ToString();
+            Player2Details.Content = player2.ToString();
+        }
+
+        private void TurnBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Uri resourceUri = new Uri($"{player1.Hand[0].CardImage}", UriKind.Relative);
+            Player1CurrentCard.Source = new BitmapImage(resourceUri);
+            resourceUri = new Uri($"{player2.Hand[0].CardImage}", UriKind.Relative);
+            Player2CurrentCard.Source = new BitmapImage(resourceUri);
+            player1.Hand.Add(player1.Hand.First());
+            player1.Hand.Remove(player1.Hand.First());
+            player2.Hand.Add(player2.Hand.First());
+            player2.Hand.Remove(player2.Hand.First());
+            Player1Details.Content = player1.ToString();
+            Player2Details.Content = player2.ToString();
         }
     }
 }

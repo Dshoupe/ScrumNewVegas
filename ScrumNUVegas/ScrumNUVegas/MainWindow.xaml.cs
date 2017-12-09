@@ -179,7 +179,7 @@ namespace ScrumNUVegas
 
         private void GoFishSave_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            
+            MessageBox.Show("GoFish Saved!");
         }
 
         private void GoFishLoad_Executed(object sender, ExecutedRoutedEventArgs e)

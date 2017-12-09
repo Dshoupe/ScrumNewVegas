@@ -28,14 +28,20 @@ namespace ScrumNUVegas
     public partial class MainWindow : Window
     {
         private StackPanel mainMenu;
+        private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+        private int ticks = 0;
         public MainWindow()
         {
             InitializeComponent();
             mainMenu = MainMenu;
-            Deck deck = new Deck();
-            Test1.Source = deck.Cards[0].CardImage;
             Save.Visibility = Visibility.Hidden;
             Load.Visibility = Visibility.Hidden;
+            GameArea.Opacity = 0;
+            timer.Tick += TickTest;
+            timer.Interval = 1;
+            this.WindowState = WindowState.Maximized;
+            this.ResizeMode = ResizeMode.NoResize;
+            timer.Start();
         }
 
         public void ShowSplashScreen()
@@ -45,11 +51,24 @@ namespace ScrumNUVegas
             splash.Close(new TimeSpan(0, 0, 3));
         }
 
+        private void TickTest(object sender, EventArgs e)
+        {
+            ticks++;
+            GameArea.Opacity += .008;
+            if (GameArea.Opacity == 1)
+            {
+                timer.Stop();
+            }
+        }
+
         private void BlackJackBtn_Click(object sender, RoutedEventArgs e)
         {
             GameArea.Children.Clear();
             Uri resourceUri = new Uri("Resources/Images/CasinoTable.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
+            Background.Stretch = Stretch.Fill;
+            Background.Width = 1300;
+            Background.Height = 700;
             GameArea.Children.Add(new BlackJackControl());
         }
 
@@ -58,6 +77,9 @@ namespace ScrumNUVegas
             GameArea.Children.Clear();
             Uri resourceUri = new Uri("Resources/Images/Go-Fish.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
+            Background.Stretch = Stretch.Fill;
+            Background.Width = 1300;
+            Background.Height = 700;
             GameArea.Children.Add(new GoFishControl());
         }
 
@@ -67,8 +89,8 @@ namespace ScrumNUVegas
             Uri resourceUri = new Uri("Resources/Images/Poker.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
             Background.Stretch = Stretch.Fill;
-            Background.Width = 500;
-            Background.Height = 300;
+            Background.Width = 1300;
+            Background.Height = 700;
             GameArea.Children.Add(new PokerControl());
         }
 
@@ -77,6 +99,9 @@ namespace ScrumNUVegas
             GameArea.Children.Clear();
             Uri resourceUri = new Uri("Resources/Images/War.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
+            Background.Stretch = Stretch.Fill;
+            Background.Width = 1300;
+            Background.Height = 700;
             GameArea.Children.Add(new WarControl());
         }
 
@@ -90,8 +115,6 @@ namespace ScrumNUVegas
             GameArea.Children.Clear();
             Uri resourceUri = new Uri("Resources/Images/NuVegas.jpg", UriKind.Relative);
             Background.Source = new BitmapImage(resourceUri);
-            Background.Width = 600;
-            Background.Height = 400;
             GameArea.Children.Add(mainMenu);
         }
 

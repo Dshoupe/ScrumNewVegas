@@ -27,30 +27,55 @@ namespace ScrumNUVegas.Game.War
     {
         private WarPlayer player1;
         private WarPlayer player2;
+        private bool player1Win;
+        private bool player2Win;
         private Deck deck;
-        private Card card;
+        private List<Card> warBattleCards = new List<Card>();
 
         public WarControl()
         {
             InitializeComponent();
             deck = new Deck();
+
+
+            player1 = new WarPlayer("DYLAN", false);
+            player2 = new WarPlayer("TRE", true);
+
+            DeckManager();
+            player1DeckCount.Content = player1.Hand.Count.ToString();
+            player2DeckCount.Content = player2.Hand.Count.ToString();
         }
+
 
         public void FeatureSelection()
         {
 
-            
+
         }
-       
+
+        public void checkWinner()
+        {
+            if(player1.Hand.Count <= 3 )
+            {
+                player1Win = true;
+            }
+            else if(player2.Hand.Count <= 3)
+            {
+                player2Win = true;
+            }
+            
+
+        }
         public void DeckManager()
         {
-            for(int x = 0; x < deck.Cards.Count / 2; x++)
+            deck.Shuffle();
+            for (int x = 0; x < deck.Cards.Count / 2; x++)
             {
                 player1.Hand.Add(deck.Cards[x]);
             }
-            for(int x = 26; x < deck.Cards.Count; x++)
+            for (int x = 26; x < deck.Cards.Count; x++)
             {
-                player1.Hand.Add(deck.Cards[x]);
+                player2.Hand.Add(deck.Cards[x]);
             }
         }
 
@@ -95,13 +120,100 @@ namespace ScrumNUVegas.Game.War
             deck = newGame.Deck;
         }
 
-        public void WarBattle()
+        public void WarBattle(int player1Card, int player2Card)
         {
-            while(player1.Hand.Count != 0 && player2.Hand.Count !=0)
+
+            int i = player1Card;
+            int k = player2Card;
+            int count = 0;
+            bool keepGoing = true;
+            if (player1.Hand[i].FaceValue > player2.Hand[k].FaceValue)
             {
-                //for(int x = 0; )
-                //if (player1.Hand[i].FaceValue)
+                player1.Hand.Add(player2.Hand[k]);
+                player2.Hand.Remove(player2.Hand[k]);
+
             }
+            else if (player2.Hand[k].FaceValue > player1.Hand[i].FaceValue)
+            {
+                player2.Hand.Add(player1.Hand[i]);
+                player1.Hand.Remove(player1.Hand[i]);
+
+            }
+            else
+            {
+                int warCount = 1;
+                MessageBox.Show("There is War Baby!!!!!");
+
+                while (keepGoing)
+                {
+                    
+                    i = player1.Hand.IndexOf(player1.Hand.First());
+                    k = player2.Hand.IndexOf(player2.Hand.First());
+                    if (player1.Hand[i].FaceValue > player2.Hand[k].FaceValue || player2.Hand.Count == 3)
+                    {
+                        keepGoing = false;
+                        for (count = 0; count < warBattleCards.Count; count++)
+                        {
+                            player1.Hand.Add(warBattleCards[count]);
+                        }
+                        warBattleCards.Clear();
+                    }
+                    else if (player2.Hand[k].FaceValue > player1.Hand[i].FaceValue || player1.Hand.Count == 3)
+                    {
+                        keepGoing = false;
+                        for (count = 0; count < warBattleCards.Count; count++)
+                        {
+                            player2.Hand.Add(warBattleCards[count]);
+                        }
+                        warBattleCards.Clear();
+                    }
+                    else
+                    {
+                        if(warCount >= 2)
+                        {
+                            MessageBox.Show("There is ANOTHER War Baby!!!!!");
+                        }
+                        for (count = 0; count < 3; count++)
+                        {
+                            warBattleCards.Add(player1.Hand[count]);
+                            warBattleCards.Add(player2.Hand[count]);
+                            player1.Hand.Remove(player1.Hand[count]);
+                            player2.Hand.Remove(player2.Hand[count]);
+                        }
+                        warCount++;
+                    }
+
+                }
+
+            }
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Card1.Source = player1.Hand.First().CardImage;
+            Card2.Source = player2.Hand.First().CardImage;
+            WarBattle(player1.Hand.IndexOf(player1.Hand.First()), player2.Hand.IndexOf(player2.Hand.First()));
+            checkWinner();
+            if(player1Win == true)
+            {
+                MessageBox.Show(player1.Name + " has Won the War!!!!");
+            }
+            else if(player2Win == true)
+            {
+                MessageBox.Show(player1.Name + " has Won the War!!!!");
+            }
+            else
+            {
+                player1.Hand.Add(player1.Hand.First());
+                player1.Hand.Remove(player1.Hand.First());
+                player2.Hand.Add(player2.Hand.First());
+                player2.Hand.Remove(player2.Hand.First());
+                player1DeckCount.Content = player1.Hand.Count.ToString();
+                player2DeckCount.Content = player2.Hand.Count.ToString();
+            }
+          
+            
         }
     }
 }

@@ -12,11 +12,11 @@ namespace ScrumNUVegas.Game.War.Models
     {
         bool IsCpu { get; set; }
 
-        public WarPlayer(String name, bool isCpu, List<Card> hand)
+        public WarPlayer(String name, bool isCpu)
         {
             Name = name;
             IsCpu = isCpu;
-            Hand = hand;
+            Hand = new List<Card>();
         }
     }
 }

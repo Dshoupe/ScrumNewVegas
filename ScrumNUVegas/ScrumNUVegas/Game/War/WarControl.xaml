@@ -4,9 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ScrumNUVegas.Game.War"
-             mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="525">
+             mc:Ignorable="d">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="player1Area" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="player1DeckCount"></Label>
+                <Image Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"  Height="100" Width="50"></Image>
+            </StackPanel>
+            <StackPanel x:Name="player1WarPanel" Orientation="Horizontal" MinHeight="200" Visibility="Hidden"></StackPanel>
+            <StackPanel x:Name="player1PlayArea" Orientation="Horizontal">
+                <Image x:Name="Card1" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"  Height="100" Width="50"></Image>
+            </StackPanel>
+            <Button Click="Button_Click">
+                "Play"
+            </Button>
+        </StackPanel>
+        
+        <StackPanel x:Name="player2Area" Orientation="Vertical" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="player2DeckCount"></Label>
+                <Image Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"  Height="100" Width="50"></Image>
+            </StackPanel>
+            <StackPanel x:Name="player2WarPanel" Orientation="Horizontal" MinHeight="200" Visibility="Hidden">
+                
+            </StackPanel>
+            <StackPanel x:Name="player2PlayArea" Orientation="Horizontal">
+                <Image x:Name="Card2" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"  Height="100" Width="50"></Image>
+            </StackPanel>
+        </StackPanel>
+       
+    
     </Grid>
 </UserControl>

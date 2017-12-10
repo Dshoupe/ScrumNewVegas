@@ -40,6 +40,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -220,6 +221,198 @@
     <Resource Include="Resources\Images\Go-Fish.jpg" />
     <Resource Include="Resources\Images\Poker.jpg" />
     <Resource Include="Resources\Images\War.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\10C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\10D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\10H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\10S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\11C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\11D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\11H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\11S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\12C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\12D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\12H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\12S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\13C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\13D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\13H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\13S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\1C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\1D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\1H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\1S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\2C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\2D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\2H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\2S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\3C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\3D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\3H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\3S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\4C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\4D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\4H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\4S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\5C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\5D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\5H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\5S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\6C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\6D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\6H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\6S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\7C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\7D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\7H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\7S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\8C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\8D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\8H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\8S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\9C.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\9D.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\9H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\9S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\CardBacks\blue_back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\CardBacks\Gray_back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\CardBacks\Green_back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\CardBacks\purple_back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\CardBacks\Red_back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CardImages\CardBacks\Yellow_back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\CasinoTable.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\Go-Fish.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\NUVegas.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\NUVegas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\Poker.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\War\Resources\Images\War.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

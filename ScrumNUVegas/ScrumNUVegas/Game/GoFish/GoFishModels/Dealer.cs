@@ -30,9 +30,16 @@ namespace ScrumNUVegas.Game.GoFish.GoFishModels
 
         public Card dealOneCard()
         {
-            Card temp = dealerDeck.Cards.Last();
-            dealerDeck.Cards.Remove(dealerDeck.Cards.Last());
-            return temp;
+            if (RemainingCards()>0)
+            {
+                Card temp = dealerDeck.Cards.Last();
+                dealerDeck.Cards.Remove(dealerDeck.Cards.Last());
+                return temp;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public int RemainingCards()

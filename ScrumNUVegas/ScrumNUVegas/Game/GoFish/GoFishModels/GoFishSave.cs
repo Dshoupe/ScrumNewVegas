@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScrumNUVegas.Game.GoFish.GoFishModels
 {
+    [Serializable]
     public class GoFishSave
     {
         public Dealer Dealer { get; set; }

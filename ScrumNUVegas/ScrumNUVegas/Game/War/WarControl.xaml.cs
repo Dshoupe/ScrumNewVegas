@@ -38,28 +38,25 @@ namespace ScrumNUVegas.Game.War
             grid = GameArea;
             WarTheme.Source = new Uri("Music/warTheme.mp3", UriKind.Relative);
             this.Loaded += new RoutedEventHandler(WarControl_Loaded);
-
-
         }
 
 
         public void WarControl_Loaded(object sender, RoutedEventArgs e)
         {
-            WarTheme.Play();           
-
+            WarTheme.Play();
         }
 
         public void checkWinner()
         {
-            if(player1.Hand.Count <= 3 )
+            if (player1.Hand.Count <= 3)
             {
                 player1Win = true;
             }
-            else if(player2.Hand.Count <= 3)
+            else if (player2.Hand.Count <= 3)
             {
                 player2Win = true;
             }
-          
+
 
         }
         public void DeckManager()
@@ -75,9 +72,6 @@ namespace ScrumNUVegas.Game.War
             }
         }
 
-      
-
-      
         public void WarBattle(int player1Card, int player2Card)
         {
 
@@ -89,24 +83,24 @@ namespace ScrumNUVegas.Game.War
             {
                 player1.Hand.Add(player2.Hand[k]);
                 player2.Hand.Remove(player2.Hand[k]);
-               
+
 
             }
             else if (player2.Hand[k].FaceValue > player1.Hand[i].FaceValue)
             {
                 player2.Hand.Add(player1.Hand[i]);
                 player1.Hand.Remove(player1.Hand[i]);
-              
+
 
             }
             else
             {
                 int warCount = 1;
                 MessageBox.Show("There is War Baby!!!!!");
-                
+
                 while (keepGoing)
                 {
-                    
+
 
                     i = player1.Hand.IndexOf(player1.Hand.First());
                     k = player2.Hand.IndexOf(player2.Hand.First());
@@ -146,13 +140,10 @@ namespace ScrumNUVegas.Game.War
                         }
                         warCount++;
                     }
-
                 }
-
-
             }
-
         }
+
         public void SaveGame()
         {
             WarSave warSave = new WarSave() { Deck = deck, Players = new List<WarPlayer>() { player1, player2 } };
@@ -294,7 +285,8 @@ namespace ScrumNUVegas.Game.War
 
         private void WarTheme_MediaEnded(object sender, RoutedEventArgs e)
         {
-
+            WarTheme.Position = TimeSpan.Zero;
+            WarTheme.Play();
         }
     }
 }

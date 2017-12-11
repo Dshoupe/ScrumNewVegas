@@ -46,6 +46,11 @@ namespace GameHub.Models
             IsFaceDown = false;
         }
 
+        public void LoadCard()
+        {
+            CardImage = new BitmapImage(CardUri);
+        }
+
         public void Flip()
         {
             Uri resourceUri = null;

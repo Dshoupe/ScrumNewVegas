@@ -191,9 +191,25 @@ namespace ScrumNUVegas.Game.War
         {
             player1 = newGame.Players[0];
             player2 = newGame.Players[1];
+            for (int i = 0; i < player1.Hand.Count(); i++)
+            {
+                player1.Hand[i].LoadCard();
+            }
+            for (int i = 0; i < player2.Hand.Count(); i++)
+            {
+                player2.Hand[i].LoadCard();
+            }
             deck = newGame.Deck;
-        }
+            Player1Details.Content = player1.ToString();
+            Player2Details.Content = player2.ToString();
+            GameModeSelection.Visibility = Visibility.Hidden;
+            GameArea.Visibility = Visibility.Visible;
+            Uri resourceUri = new Uri($"{player1.Hand[0].CardImage}", UriKind.Relative);
+            Player1CurrentCard.Source = new BitmapImage(resourceUri);
+            resourceUri = new Uri($"{player2.Hand[0].CardImage}", UriKind.Relative);
+            Player2CurrentCard.Source = new BitmapImage(resourceUri);
 
+        }
 
         private void AICheckBox_Checked(object sender, RoutedEventArgs e)
         {

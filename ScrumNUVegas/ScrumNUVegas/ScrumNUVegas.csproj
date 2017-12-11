@@ -423,7 +423,7 @@
     <Resource Include="Game\War\Resources\Images\War.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\Music\warTheme.mp3" />
+    <Folder Include="bin\Debug\Music\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -178,8 +178,7 @@ namespace ScrumNUVegas.Game.GoFish
                         StackPanel secondPlayerSp = (StackPanel)PlayerField.Children[playerIndex];
                         secondPlayerSp.Children.RemoveAt(i + 2);
                         p.Hand.Remove(p.Hand[i]);
-
-                        ChangeActivePlayer();
+                        
                         goodGuess = true;
                         playerGuessValue = -1;
                     }

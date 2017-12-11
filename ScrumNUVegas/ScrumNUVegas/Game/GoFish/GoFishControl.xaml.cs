@@ -180,7 +180,11 @@ namespace ScrumNUVegas.Game.GoFish
                         StackPanel secondPlayerSp = (StackPanel)PlayerField.Children[playerIndex];
                         secondPlayerSp.Children.RemoveAt(i + 2);
                         p.Hand.Remove(p.Hand[i]);
-                        
+                        if (players[turnOrder % (int)PlayersSlider.Value].Hand.Count() == 0)
+                        {
+                            players[turnOrder % (int)PlayersSlider.Value].Hand = dealer.DealFiveCards();
+                            reprintHand();
+                        }
                         goodGuess = true;
                         playerGuessValue = -1;
                     }

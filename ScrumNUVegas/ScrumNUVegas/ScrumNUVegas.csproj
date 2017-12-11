@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="Game\GoFish\GoFishModels\Dealer.cs" />
     <Compile Include="Game\GoFish\GoFishModels\GoFishPlayer.cs" />
+    <Compile Include="Game\GoFish\GoFishModels\GoFishSave.cs" />
     <Compile Include="Game\Poker\PokerControl.xaml.cs">
       <DependentUpon>PokerControl.xaml</DependentUpon>
     </Compile>

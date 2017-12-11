@@ -278,6 +278,7 @@ namespace ScrumNUVegas.Game.GoFish
 
         public void SaveGame()
         {
+            GoFishSave save = new GoFishSave() { Dealer = dealer, Players = players.ToList(), TotalCardCount = totalCardCount, TurnOrder = turnOrder};
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = ".gofish";
             sfd.FileName = "GoFish.gofish";
@@ -287,7 +288,7 @@ namespace ScrumNUVegas.Game.GoFish
                 using (FileStream stream = new FileStream(sfd.FileName, FileMode.OpenOrCreate))
                 {
                     BinaryFormatter bf = new BinaryFormatter();
-                    bf.Serialize(stream, dealer);
+                    bf.Serialize(stream, save);
                 }
             }
         }
@@ -297,21 +298,29 @@ namespace ScrumNUVegas.Game.GoFish
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.DefaultExt = ".gofish";
             ofd.Filter = "GoFish Game Saves (*.gofish)|*.gofish";
-            Dealer newGame = null;
+            GoFishSave newGame = null;
             if (ofd.ShowDialog() == true)
             {
                 using (FileStream stream = new FileStream(ofd.FileName, FileMode.Open))
                 {
                     BinaryFormatter bf = new BinaryFormatter();
-                    newGame = (Dealer)bf.Deserialize(stream);
+                    newGame = (GoFishSave)bf.Deserialize(stream);
                 }
                 LoadGame(newGame);
             }
         }
 
-        private void LoadGame(Dealer newGame)
+        private void LoadGame(GoFishSave newGame)
         {
-
+            dealer = newGame.Dealer;
+            turnOrder = newGame.TurnOrder;
+            totalCardCount = newGame.TotalCardCount;
+            players = new GoFishPlayer[newGame.Players.Count];
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i] = newGame.Players[i];
+            }
+            SetUpPanel.Visibility = Visibility.Hidden;
         }
 
         private void GoFishTest_Click(object sender, RoutedEventArgs e)

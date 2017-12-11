@@ -29,11 +29,11 @@ namespace ScrumNUVegas.Game.GoFish
         int turnOrder = 0;
         int totalCardCount = 52;
         GoFishPlayer[] players;
-
+        int playerGuessValue = -1;
+        bool gameOver = false;
         public GoFishControl()
         {
             InitializeComponent();
-
         }
 
         private void StartGame_Click(object sender, RoutedEventArgs e)
@@ -43,14 +43,29 @@ namespace ScrumNUVegas.Game.GoFish
             dealer = new Dealer();
             players = CreatePlayers(PlayersSlider.Value);
             int count = 0;
+            MessageBox.Show($"Please give the computer to the first player.");
             foreach (GoFishPlayer p in players)
             {
                 StackPanel sp = new StackPanel();
                 sp.Orientation = Orientation.Horizontal;
 
+
+
                 Thickness margin = sp.Margin;
                 margin.Top = 20;
                 sp.Margin = margin;
+
+                Label scoreCard = new Label();
+                margin = scoreCard.Margin;
+                margin.Top = 10;
+                margin.Bottom = 10;
+                scoreCard.Margin = margin;
+                scoreCard.Width = 50;
+                scoreCard.Content = $"Pairs: {p.Score}";
+                scoreCard.Background = new SolidColorBrush(Colors.DeepSkyBlue);
+                scoreCard.Foreground = new SolidColorBrush(Colors.White);
+                sp.Children.Add(scoreCard);
+
 
                 p.Hand = dealer.DealFiveCards();
                 Label l = new Label();
@@ -59,18 +74,22 @@ namespace ScrumNUVegas.Game.GoFish
                 margin.Bottom = 10;
                 l.Margin = margin;
                 l.Width = 100;
-                TextBox t = (TextBox)PlayerSelectionLabels.Children[count++];
+                TextBox t = (TextBox)PlayerSelectionLabels.Children[count];
                 l.Background = new SolidColorBrush(Colors.DeepSkyBlue);
                 l.Foreground = new SolidColorBrush(Colors.White);
                 l.FontSize = 20;
+                l.MouseLeftButtonDown += PlayerTarget_MouseLeftButtonDown;
                 l.Content = t.Text;
                 p.Name = l.Content.ToString();
 
                 sp.Children.Add(l);
-                
+
                 for (int i = 0; i < p.Hand.Count(); i++)
                 {
-                    p.Hand[i].Flip();
+                    if (count != 0)
+                    {
+                        p.Hand[i].Flip();
+                    }
                     //REALLY weird issue, had to access the images at runtime so for GoFish, the images will be held in the debug folder -- https://stackoverflow.com/questions/569561/dynamic-loading-of-images-in-wpf
                     Label label = new Label();
                     Image img = new Image();
@@ -86,73 +105,189 @@ namespace ScrumNUVegas.Game.GoFish
                     margin.Left = 10;
                     label.Margin = margin;
                     label.Width = 50;
+                    label.MouseLeftButtonDown += PlayerGuess_MouseLeftButtonDown;
                     sp.Children.Add(label);
                 }
-                Label scoreCard = new Label();
-                margin = scoreCard.Margin;
-                margin.Top = 10;
-                margin.Bottom = 10;
-                scoreCard.Margin = margin;
-                scoreCard.Width = 50;
-                scoreCard.Content = $"Pairs: {p.Score}";
-                scoreCard.Background = new SolidColorBrush(Colors.DeepSkyBlue);
-                scoreCard.Foreground = new SolidColorBrush(Colors.White);
-                sp.Children.Insert(0,scoreCard);
+
 
                 PlayerField.Children.Add(sp);
-                int currentTurn = turnOrder++ % (int)PlayersSlider.Value;
-                checkForPairs(p, currentTurn);
+                checkForPairs(p, count++);
             }
-                ChangeActivePlayer();
+        }
+
+        private void PlayerGuess_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            StackPanel sp = (StackPanel)PlayerField.Children[turnOrder % (int)PlayersSlider.Value];
+            for (int i = 2; i < sp.Children.Count; i++)
+            {
+                ((Label)sp.Children[i]).Background = null;
+            }
+            int index = sp.Children.IndexOf((Label)sender) - 2;
+            if (index >= 0 && players[turnOrder % (int)PlayersSlider.Value].Hand.Count() > 0)
+            {
+                int temp = (int)players[turnOrder % (int)PlayersSlider.Value].Hand[index].FaceValue;
+                if (temp >= 0 )
+                {
+                    playerGuessValue = temp;
+                    ((Label)sender).Background = new SolidColorBrush(Colors.Red);
+                }
+            }
+        }
+
+        private void PlayerTarget_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            string name = ((Label)sender).Content.ToString();
+            if (playerGuessValue != -1 && name != players[turnOrder % (int)PlayersSlider.Value].Name)
+            {
+                Player p = players.Where(x => x.Name == name).First();
+                bool goodGuess = false;
+                MessageBox.Show($"Do you have any {(Face)playerGuessValue}'s");
+                for (int i = 0; i < p.Hand.Count && !goodGuess; i++)
+                {
+                    if ((int)p.Hand[i].FaceValue == playerGuessValue)
+                    {
+                        players[turnOrder % (int)PlayersSlider.Value].Hand.Add(p.Hand[i]);
+                        players[turnOrder % (int)PlayersSlider.Value].Hand.Last().Flip();
+                        StackPanel sp = (StackPanel)PlayerField.Children[turnOrder % (int)PlayersSlider.Value];
+                        Label label = new Label();
+                        Image img = new Image();
+                        BitmapImage bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.UriSource = players[turnOrder % (int)PlayersSlider.Value].Hand.Last().CardUri;
+                        bitmapImage.EndInit();
+                        img.Source = bitmapImage;
+                        label.Content = img;
+                        Thickness margin = label.Margin;
+                        margin.Right = 10;
+                        margin.Left = 10;
+                        label.Margin = margin;
+                        label.Width = 50;
+                        label.MouseLeftButtonDown += PlayerGuess_MouseLeftButtonDown;
+                        sp.Children.Add(label);
+                        MessageBox.Show($"You Stole my {p.Hand[i].FaceValue}");
+                        checkForPairs(players[turnOrder % (int)PlayersSlider.Value], turnOrder % (int)PlayersSlider.Value);
+                        int playerIndex = 0;
+                        for (int k = 0; k < players.Count(); k++)
+                        {
+                            if (players[k] == p)
+                            {
+                                playerIndex = k;
+                            }
+                        }
+                        StackPanel secondPlayerSp = (StackPanel)PlayerField.Children[playerIndex];
+                        secondPlayerSp.Children.RemoveAt(i + 2);
+                        p.Hand.Remove(p.Hand[i]);
+
+                        ChangeActivePlayer();
+                        goodGuess = true;
+                        playerGuessValue = -1;
+                    }
+                }
+                if (!goodGuess)
+                {
+                    MessageBox.Show($"GO FISH!");
+                    goFish();
+                }
+            }
         }
 
         private void goFish()
         {
             StackPanel sp = (StackPanel)PlayerField.Children[turnOrder % (int)PlayersSlider.Value];
-            players[turnOrder % (int)PlayersSlider.Value].Hand.Add(dealer.dealOneCard());
-            if (dealer.RemainingCards() == 0)
+            Card c = dealer.dealOneCard();
+            if (c != null)
             {
-                GoFishTester.Children.Clear();
-            }
-            Label label = new Label();
-            Image img = new Image();
-            BitmapImage bitmapImage = new BitmapImage();
-            bitmapImage.BeginInit();
-            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-            bitmapImage.UriSource = players[turnOrder % (int)PlayersSlider.Value].Hand.Last().CardUri;
-            bitmapImage.EndInit();
-            img.Source = bitmapImage;
-            label.Content = img;
-            Thickness margin = label.Margin;
-            margin.Right = 10;
-            margin.Left = 10;
-            label.Margin = margin;
-            label.Width = 50;
-            sp.Children.Add(label);
-            int playerOldScore = players[turnOrder % (int)PlayersSlider.Value].Score;
-            checkForPairs(players[turnOrder % (int)PlayersSlider.Value], turnOrder % (int)PlayersSlider.Value);
-            int playerNewScore = players[turnOrder % (int)PlayersSlider.Value].Score;
-            if (playerOldScore < playerNewScore)
-            {
-                MessageBox.Show($"{players[turnOrder % (int)PlayersSlider.Value].Name} fished what they wanted. They get another turn!");
-                
+                players[turnOrder % (int)PlayersSlider.Value].Hand.Add(c);
+                Label label = new Label();
+                Image img = new Image();
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.UriSource = players[turnOrder % (int)PlayersSlider.Value].Hand.Last().CardUri;
+                bitmapImage.EndInit();
+                img.Source = bitmapImage;
+                label.Content = img;
+                Thickness margin = label.Margin;
+                margin.Right = 10;
+                margin.Left = 10;
+                label.Margin = margin;
+                label.Width = 50;
+                label.MouseLeftButtonDown += PlayerGuess_MouseLeftButtonDown;
+                sp.Children.Add(label);
+                int previousScore = players[turnOrder % (int)PlayersSlider.Value].Score;
+                checkForPairs(players[turnOrder % (int)PlayersSlider.Value], turnOrder % (int)PlayersSlider.Value);
+                int newScore = players[turnOrder % (int)PlayersSlider.Value].Score;
+                if (previousScore < newScore)
+                {
+                    MessageBox.Show($"{players[turnOrder % (int)PlayersSlider.Value].Name} fished what they wanted. They get another turn!");
+                    playerGuessValue = -1;
+                    for (int i = 2; i < sp.Children.Count; i++)
+                    {
+                        ((Label)sp.Children[i]).Background = null;
+                    }
+                    if (players[turnOrder % (int)PlayersSlider.Value].Hand.Count() == 0)
+                    {
+                        if (dealer.dealerDeck.Cards.Count > 0)
+                        {
+                            players[turnOrder % (int)PlayersSlider.Value].Hand = dealer.DealFiveCards();
+                            reprintHand();
+                        }
+                        else
+                        {
+                            MessageBox.Show("There are not cards left in the deck to draw. Your turn has been skipped.");
+                            ChangeActivePlayer();
+                        }
+                    }
+                }
+                else
+                {
+                    playerGuessValue = -1;
+                    ChangeActivePlayer();
+                }
             }
             else
             {
                 ChangeActivePlayer();
             }
+            
         }
 
         private void ChangeActivePlayer()
         {
-            int count = 2;
-            if (turnOrder != 0)
+            if (totalCardCount == 0)
             {
+                List<GoFishPlayer> winningPlayers = new List<GoFishPlayer>();
+                winningPlayers.Add(new GoFishPlayer());
+                foreach (GoFishPlayer p in players)
+                {
+                    if (p.Score > winningPlayers[0].Score)
+                    {
+                        winningPlayers.Clear();
+                        winningPlayers.Add(p);
+                    }else if (p.Score == winningPlayers[0].Score)
+                    {
+                        winningPlayers.Add(p);
+                    }
+                }
+                string names = "";
+                foreach (GoFishPlayer winner in winningPlayers)
+                {
+                    names += $"{winner.Name} ";
+                }
+                MessageBox.Show($"{names} won the game with a score of {winningPlayers[0].Score}!! Please press Ctrl + B to return to the main menu");
+                PlayerField.Children.Clear();
+                gameOver = true;
+            }
+            if (!gameOver)
+            {
+                int count = 1;
                 StackPanel sp = (StackPanel)PlayerField.Children[turnOrder % (int)PlayersSlider.Value];
                 foreach (Card c in players[turnOrder % (int)PlayersSlider.Value].Hand)
                 {
                     c.Flip();
-                    Label label = (Label)sp.Children[count++];
+                    Label label = (Label)sp.Children[++count];
+                    label.Background = null;
                     Image img = new Image();
                     BitmapImage bitmapImage = new BitmapImage();
                     bitmapImage.BeginInit();
@@ -167,7 +302,9 @@ namespace ScrumNUVegas.Game.GoFish
                     label.Margin = margin;
                     label.Width = 50;
                 }
+
                 turnOrder++;
+                MessageBox.Show($"It is {players[turnOrder % (int)PlayersSlider.Value].Name}'s turn. Please pass the computer.");
                 sp = (StackPanel)PlayerField.Children[turnOrder % (int)PlayersSlider.Value];
                 count = 2;
                 foreach (Card c in players[turnOrder % (int)PlayersSlider.Value].Hand)
@@ -188,39 +325,57 @@ namespace ScrumNUVegas.Game.GoFish
                     label.Margin = margin;
                     label.Width = 50;
                 }
-            }
-            else
-            {
-                StackPanel sp = (StackPanel)PlayerField.Children[turnOrder % (int)PlayersSlider.Value];
-                foreach (Card c in players[turnOrder % (int)PlayersSlider.Value].Hand)
+                if (players[turnOrder % (int)PlayersSlider.Value].Hand.Count() == 0)
                 {
-                    c.Flip();
-                    Label label = (Label)sp.Children[count++];
-                    Image img = new Image();
-                    BitmapImage bitmapImage = new BitmapImage();
-                    bitmapImage.BeginInit();
-                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmapImage.UriSource = c.CardUri;
-                    bitmapImage.EndInit();
-                    img.Source = bitmapImage;
-                    label.Content = img;
-                    Thickness margin = label.Margin;
-                    margin.Right = 10;
-                    margin.Left = 10;
-                    label.Margin = margin;
-                    label.Width = 50;
+                    if (dealer.dealerDeck.Cards.Count > 0)
+                    {
+                        players[turnOrder % (int)PlayersSlider.Value].Hand = dealer.DealFiveCards();
+                        reprintHand();
+                    }
+                    else
+                    {
+                        MessageBox.Show("There are not cards left in the deck to draw. Your turn has been skipped.");
+                        ChangeActivePlayer();
+                    }
                 }
             }
-        }   
+        }
+
+        private void reprintHand()
+        {
+            StackPanel sp = (StackPanel)PlayerField.Children[turnOrder % (int)PlayersSlider.Value];
+            Player p = players[turnOrder % (int)PlayersSlider.Value];
+            for (int i = 0; i < p.Hand.Count(); i++)
+            {
+                //REALLY weird issue, had to access the images at runtime so for GoFish, the images will be held in the debug folder -- https://stackoverflow.com/questions/569561/dynamic-loading-of-images-in-wpf
+                Label label = new Label();
+                Image img = new Image();
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.UriSource = p.Hand[i].CardUri;
+                bitmapImage.EndInit();
+                img.Source = bitmapImage;
+                label.Content = img;
+
+                Thickness margin = label.Margin;
+                margin.Right = 10;
+                margin.Left = 10;
+                label.Margin = margin;
+                label.Width = 50;
+                label.MouseLeftButtonDown += PlayerGuess_MouseLeftButtonDown;
+                sp.Children.Add(label);
+            }
+        }
 
         private void checkForPairs(GoFishPlayer player, int playerNum)
         {
             bool hasPair = false;
             for (int i = 0; i < (player.Hand.Count - 1); i++)
             {
-                for (int j = (i+1); j < player.Hand.Count && !hasPair; j++)
+                for (int j = (i + 1); j < player.Hand.Count && !hasPair; j++)
                 {
-                    if(player.Hand[i].FaceValue == player.Hand[j].FaceValue)
+                    if (player.Hand[i].FaceValue == player.Hand[j].FaceValue)
                     {
                         hasPair = true;
                         player.Score += 1;
@@ -232,17 +387,8 @@ namespace ScrumNUVegas.Game.GoFish
                         sp.Children.RemoveAt(i + 2);
                         totalCardCount -= 2;
 
-                        sp.Children.RemoveAt(0);
-                        Label scoreCard = new Label();
-                        Thickness margin = scoreCard.Margin;
-                        margin.Top = 10;
-                        margin.Bottom = 10;
-                        scoreCard.Margin = margin;
-                        scoreCard.Width = 50;
-                        scoreCard.Content = $"Pairs: {player.Score}";
-                        scoreCard.Background = new SolidColorBrush(Colors.DeepSkyBlue);
-                        scoreCard.Foreground = new SolidColorBrush(Colors.White);
-                        sp.Children.Insert(0, scoreCard);
+                        ((Label)sp.Children[0]).Content = $"Pairs: {player.Score}"; ;
+
                         i -= 1;
                     }
                 }
@@ -314,9 +460,5 @@ namespace ScrumNUVegas.Game.GoFish
 
         }
 
-        private void GoFishTest_Click(object sender, RoutedEventArgs e)
-        {
-            goFish();
-        }
     }
 }

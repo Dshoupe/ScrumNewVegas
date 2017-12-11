@@ -20,7 +20,7 @@ namespace ScrumNUVegas.Game.GoFish.GoFishModels
         public List<Card> DealFiveCards()
         {
             List<Card> newHand = new List<Card>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 5 && dealerDeck.Cards.Count > 0; i++)
             {
                 newHand.Add(dealerDeck.Cards.Last());
                 dealerDeck.Cards.Remove(dealerDeck.Cards.Last());

@@ -38,6 +38,8 @@ namespace ScrumNUVegas.Game.GoFish
 
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Thank you for choosing Go Fish! To play please click on your card you wish to fish for, then click on the player's name to fish for your selected card." +
+                " Points will be awarded for each pair that you get. If you must go fish and fish a pair you will be given a second turn.");
             SetUpPanel.Visibility = Visibility.Hidden;
 
             dealer = new Dealer();
@@ -423,6 +425,7 @@ namespace ScrumNUVegas.Game.GoFish
 
         public void SaveGame()
         {
+            GoFishSave save = new GoFishSave() { Dealer = dealer, Players = players.ToList(), TotalCardCount = totalCardCount, TurnOrder = turnOrder};
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = ".gofish";
             sfd.FileName = "GoFish.gofish";
@@ -432,7 +435,7 @@ namespace ScrumNUVegas.Game.GoFish
                 using (FileStream stream = new FileStream(sfd.FileName, FileMode.OpenOrCreate))
                 {
                     BinaryFormatter bf = new BinaryFormatter();
-                    bf.Serialize(stream, dealer);
+                    bf.Serialize(stream, save);
                 }
             }
         }
@@ -442,21 +445,100 @@ namespace ScrumNUVegas.Game.GoFish
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.DefaultExt = ".gofish";
             ofd.Filter = "GoFish Game Saves (*.gofish)|*.gofish";
-            Dealer newGame = null;
+            GoFishSave newGame = null;
             if (ofd.ShowDialog() == true)
             {
                 using (FileStream stream = new FileStream(ofd.FileName, FileMode.Open))
                 {
                     BinaryFormatter bf = new BinaryFormatter();
-                    newGame = (Dealer)bf.Deserialize(stream);
+                    newGame = (GoFishSave)bf.Deserialize(stream);
                 }
                 LoadGame(newGame);
             }
         }
 
-        private void LoadGame(Dealer newGame)
+        private void LoadGame(GoFishSave newGame)
         {
+            dealer = newGame.Dealer;
+            turnOrder = newGame.TurnOrder;
+            totalCardCount = newGame.TotalCardCount;
+            players = new GoFishPlayer[newGame.Players.Count];
+            PlayersSlider.Value = players.Count();
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i] = newGame.Players[i];
+            }
+            SetUpPanel.Visibility = Visibility.Hidden;
+            int count = 0;
+            PlayerField.Children.Clear();
+            foreach (GoFishPlayer p in players)
+            {
+                StackPanel sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
 
+
+
+                Thickness margin = sp.Margin;
+                margin.Top = 20;
+                sp.Margin = margin;
+
+                Label scoreCard = new Label();
+                margin = scoreCard.Margin;
+                margin.Top = 10;
+                margin.Bottom = 10;
+                scoreCard.Margin = margin;
+                scoreCard.Width = 50;
+                scoreCard.Content = $"Pairs: {p.Score}";
+                scoreCard.Background = new SolidColorBrush(Colors.DeepSkyBlue);
+                scoreCard.Foreground = new SolidColorBrush(Colors.White);
+                sp.Children.Add(scoreCard);
+
+
+                p.Hand = dealer.DealFiveCards();
+                Label l = new Label();
+                margin = l.Margin;
+                margin.Top = 10;
+                margin.Bottom = 10;
+                l.Margin = margin;
+                l.Width = 100;
+                l.Background = new SolidColorBrush(Colors.DeepSkyBlue);
+                l.Foreground = new SolidColorBrush(Colors.White);
+                l.FontSize = 20;
+                l.MouseLeftButtonDown += PlayerTarget_MouseLeftButtonDown;
+                l.Content = players[count].Name;
+                p.Name = l.Content.ToString();
+
+                sp.Children.Add(l);
+
+                for (int i = 0; i < p.Hand.Count(); i++)
+                {
+                    if (count != turnOrder % players.Count())
+                    {
+                        p.Hand[i].Flip();
+                    }
+                    //REALLY weird issue, had to access the images at runtime so for GoFish, the images will be held in the debug folder -- https://stackoverflow.com/questions/569561/dynamic-loading-of-images-in-wpf
+                    Label label = new Label();
+                    Image img = new Image();
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.UriSource = p.Hand[i].CardUri;
+                    bitmapImage.EndInit();
+                    img.Source = bitmapImage;
+                    label.Content = img;
+                    margin = label.Margin;
+                    margin.Right = 10;
+                    margin.Left = 10;
+                    label.Margin = margin;
+                    label.Width = 50;
+                    label.MouseLeftButtonDown += PlayerGuess_MouseLeftButtonDown;
+                    sp.Children.Add(label);
+                }
+
+
+                PlayerField.Children.Add(sp);
+                checkForPairs(p, count++);
+            }
         }
 
     }

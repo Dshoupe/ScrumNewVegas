@@ -140,6 +140,14 @@
     <Resource Include="Resources\Fonts\NOZSTUDIO.ttf" />
     <Resource Include="Resources\Fonts\SEASRN__.ttf" />
     <Resource Include="Resources\Fonts\StickFigures.ttf" />
+    <Resource Include="Game\War\Resources\Fonts\CWG Sans.ttf" />
+    <Resource Include="Game\War\Resources\Fonts\destroy_the_enemy.ttf" />
+    <Resource Include="Game\War\Resources\Fonts\FLATS.ttf" />
+    <Resource Include="Game\War\Resources\Fonts\Ghost Of The Wild West.ttf" />
+    <Resource Include="Game\War\Resources\Fonts\GRATIS.ttf" />
+    <Resource Include="Game\War\Resources\Fonts\NOZSTUDIO.ttf" />
+    <Resource Include="Game\War\Resources\Fonts\SEASRN__.ttf" />
+    <Resource Include="Game\War\Resources\Fonts\StickFigures.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -413,6 +421,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Game\War\Resources\Images\War.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Music\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Music\warTheme.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -422,7 +422,7 @@ namespace ScrumNUVegas.Game.GoFish
             }
         }
 
-        private void SaveGame()
+        public void SaveGame()
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = ".gofish";
@@ -438,7 +438,7 @@ namespace ScrumNUVegas.Game.GoFish
             }
         }
 
-        private void LoadGameWindow()
+        public void LoadGameWindow()
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.DefaultExt = ".gofish";

@@ -169,22 +169,26 @@ namespace ScrumNUVegas
 
         private void WarSave_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("War Saved!");
+            WarControl war = ((WarControl)GameArea.Children[0]);
+            war.SaveGame();
         }
 
         private void WarLoad_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("War Opened!");
+            WarControl war = ((WarControl)GameArea.Children[0]);
+            war.LoadGameWindow();
         }
 
         private void GoFishSave_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("GoFish Saved!");
+            GoFishControl gofish = ((GoFishControl)GameArea.Children[0]);
+            gofish.SaveGame();
         }
 
         private void GoFishLoad_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("GoFish Opened!");
+            GoFishControl gofish = ((GoFishControl)GameArea.Children[0]);
+            gofish.LoadGameWindow();
         }
 
         private void PokerSave_Executed(object sender, ExecutedRoutedEventArgs e)

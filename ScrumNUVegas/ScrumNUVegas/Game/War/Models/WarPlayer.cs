@@ -11,19 +11,19 @@ namespace ScrumNUVegas.Game.War.Models
     public class WarPlayer : Player
     {
         bool IsCPU { get; set; }
-
-        public WarPlayer(String name, bool isCPU, List<Card> hand)
+        public static int playerCount = 1;
+        public WarPlayer(String name, bool isCPU)
         {
             if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
             {
-                Name = "Player";
+                Name = "Player " + playerCount++;
             }
             else
             {
                 Name = name;
             }
             IsCPU = isCPU;
-            Hand = hand;
+            Hand = new List<Card>();
         }
 
         public override string ToString()

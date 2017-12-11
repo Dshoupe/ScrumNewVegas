@@ -52,6 +52,9 @@
 			 </StackPanel>
 		  </StackPanel>
 		  <Button x:Name="TurnBtn" Grid.ColumnSpan="2" Content="Take Turn" Click="TurnBtn_Click" Width="100" Height="50"/>
+		  <MediaElement MediaOpened="warTheme_MediaOpened" Volume="0.1" 
+                          x:Name="WarTheme" IsMuted="False" LoadedBehavior="Manual" 
+					 UnloadedBehavior="Manual" MediaEnded="WarTheme_MediaEnded"/>
 	   </Grid>
     </StackPanel>
 </UserControl>

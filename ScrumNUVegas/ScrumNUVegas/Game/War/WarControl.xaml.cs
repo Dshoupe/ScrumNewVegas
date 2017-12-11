@@ -50,11 +50,11 @@ namespace ScrumNUVegas.Game.War
         {
             if (player1.Hand.Count <= 3)
             {
-                player1Win = true;
+                player2Win = true;
             }
             else if (player2.Hand.Count <= 3)
             {
-                player2Win = true;
+                player1Win = true;
             }
 
 

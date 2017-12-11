@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ScrumNUVegas.Game.War.Models
 {
+    [Serializable]
     public class WarSave
     {
         public List<WarPlayer> Players { get; set; }

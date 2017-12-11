@@ -4,39 +4,54 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ScrumNUVegas.Game.War"
-             mc:Ignorable="d">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <StackPanel x:Name="player1Area" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <Label x:Name="player1DeckCount"></Label>
-                <Image Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"  Height="100" Width="50"></Image>
-            </StackPanel>
-            <StackPanel x:Name="player1WarPanel" Orientation="Horizontal" MinHeight="200" Visibility="Hidden"></StackPanel>
-            <StackPanel x:Name="player1PlayArea" Orientation="Horizontal">
-                <Image x:Name="Card1" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"  Height="100" Width="50"></Image>
-            </StackPanel>
-            <Button Click="Button_Click">
-                "Play"
-            </Button>
-        </StackPanel>
-        
-        <StackPanel x:Name="player2Area" Orientation="Vertical" Grid.Column="1">
-            <StackPanel Orientation="Horizontal">
-                <Label x:Name="player2DeckCount"></Label>
-                <Image Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"  Height="100" Width="50"></Image>
-            </StackPanel>
-            <StackPanel x:Name="player2WarPanel" Orientation="Horizontal" MinHeight="200" Visibility="Hidden">
-                
-            </StackPanel>
-            <StackPanel x:Name="player2PlayArea" Orientation="Horizontal">
-                <Image x:Name="Card2" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"  Height="100" Width="50"></Image>
-            </StackPanel>
-        </StackPanel>
-       
-    
-    </Grid>
+             mc:Ignorable="d" >
+    <StackPanel>
+	   <StackPanel x:Name="GameModeSelection" Background="Silver">
+		  <Label Content="Player 1 Name:"/>
+		  <TextBox x:Name="Player1Name" Height="20" Width="150"/>
+		  <StackPanel Orientation="Horizontal">
+			 <Label Content="Player 2 Name:"/>
+			 <CheckBox x:Name="AICheckBox" HorizontalAlignment="Center" VerticalAlignment="Center" Content="AI" Checked="AICheckBox_Checked" Unchecked="AICheckBox_Unchecked"/>
+		  </StackPanel>
+		  <TextBox x:Name="Player2Name" Height="20" Width="150" Padding="0 0 0 10"/>
+		  <Button x:Name="StartGameBtn" Content="Start Game" Click="StartGameBtn_Click" Width="90"/>
+	   </StackPanel>
+	   <Grid x:Name="GameArea" Background="Silver" Visibility="Hidden">
+		  <Grid.ColumnDefinitions>
+			 <ColumnDefinition/>
+			 <ColumnDefinition/>
+		  </Grid.ColumnDefinitions>
+		  
+		  <StackPanel x:Name="Player1Area" Grid.Column="0" Orientation="Vertical">
+			 <StackPanel x:Name="Player1DeckArea" Orientation="Horizontal">
+				<Image x:Name="Player1Deck" Height="100" Width="50" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"/>
+				<Label x:Name="Player1Details" Content="26" VerticalAlignment="Center"/>
+			 </StackPanel>
+			 <StackPanel x:Name="Player1WarArea" Visibility="Hidden" Orientation="Horizontal" HorizontalAlignment="Center">
+				<Image x:Name="Player1War1" Height="100" Width="50" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"/>
+				<Image x:Name="Player1War2" Height="100" Width="50" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"/>
+				<Image x:Name="Player1War3" Height="100" Width="50" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"/>
+			 </StackPanel>
+			 <StackPanel x:Name="Player1CardArea" Orientation="Horizontal" HorizontalAlignment="Center">
+				<Image x:Name="Player1CurrentCard" Height="100" Width="50" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"/>
+			 </StackPanel>
+		  </StackPanel>
+
+		  <StackPanel x:Name="Player2Area" Grid.Column="1" Orientation="Vertical" Margin="100 0 0 0">
+			 <StackPanel x:Name="Player2DeckArea" Orientation="Horizontal" HorizontalAlignment="Right">
+				<Label x:Name="Player2Details" VerticalAlignment="Center" Content="26"/>
+				<Image x:Name="Player2Deck" Height="100" Width="50" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"/>
+			 </StackPanel>
+			 <StackPanel x:Name="Player2WarArea" Visibility="Hidden" Orientation="Horizontal" HorizontalAlignment="Center">
+				<Image x:Name="Player2War1" Height="100" Width="50" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"/>
+				<Image x:Name="Player2War2" Height="100" Width="50" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"/>
+				<Image x:Name="Player2War3" Height="100" Width="50" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"/>
+			 </StackPanel>
+			 <StackPanel x:Name="Player2CardArea" Orientation="Horizontal" HorizontalAlignment="Center">
+				<Image x:Name="Player2CurrentCard" Height="100" Width="50" Source="pack://application:,,,/Resources/Images/CardImages/CardBacks/purple_back.jpg"/>
+			 </StackPanel>
+		  </StackPanel>
+		  <Button x:Name="TurnBtn" Grid.ColumnSpan="2" Content="Take Turn" Click="TurnBtn_Click" Width="100" Height="50"/>
+	   </Grid>
+    </StackPanel>
 </UserControl>

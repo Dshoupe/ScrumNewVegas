@@ -10,13 +10,32 @@ namespace ScrumNUVegas.Game.War.Models
     [Serializable]
     public class WarPlayer : Player
     {
-        bool IsCpu { get; set; }
+        bool IsCPU { get; set; }
 
-        public WarPlayer(String name, bool isCpu)
+        public WarPlayer(String name, bool isCPU, List<Card> hand)
         {
-            Name = name;
-            IsCpu = isCpu;
-            Hand = new List<Card>();
+            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+            {
+                Name = "Player";
+            }
+            else
+            {
+                Name = name;
+            }
+            IsCPU = isCPU;
+            Hand = hand;
+        }
+
+        public override string ToString()
+        {
+            if (IsCPU)
+            {
+                return $"{Name} - Card Count: {Hand.Count()} - AI";
+            }
+            else
+            {
+                return $"{Name} - Card Count: {Hand.Count()}";
+            }
         }
     }
 }
